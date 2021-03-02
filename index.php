@@ -51,7 +51,7 @@ $f3->route('POST /simpleHome',
     function ($f3) {
         //$controller = new SimpleController;
         $f3->set('SESSION.currentModule', $f3->get('POST.module'));
-        $f3->reroute('/reading');
+        $f3->reroute('/quiz');
     }
 );
 
@@ -133,9 +133,11 @@ $f3->route('GET /quiz',
     function ($f3) {
         $controller = new SimpleController;
         $questions = $controller->getQuestions($f3->get('SESSION.currentModule'));
+        $module = $controller->getModule($f3->get('SESSION.currentModule'));
 
+        $f3->set("moduleData", $module);
         $f3->set("questions", $questions);
-        $f3->set('html_title','Quiz time!');
+        $f3->set('html_title','Learn something new!');
         $f3->set('content','quiz.html');
         echo template::instance()->render('layout.html');
     }
