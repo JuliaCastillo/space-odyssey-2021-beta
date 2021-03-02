@@ -3,14 +3,14 @@
 
 <div class="quiz_backg">
 
-    <h2>Welcome to {{ @moduleData.module_name }}!</h2>
 
-    <button id="show_reading">Tell me something about {{ @moduleData.module_name }}</button>
-    <div id="reading" style="display:none;">
-        <p>{{ @moduleData.module_text }}</p>
-        <img src="{{ @moduleData.image }}">
-    </div>
     <div class="quiz_frame">
+        <h2>Welcome to {{ @moduleData.module_name }}!</h2>
+
+        <button id="show_reading">Tell me something about {{ @moduleData.module_name }}</button>
+        <div id="reading" style="display:none;">
+            <p>{{ @moduleData.module_text }}</p>
+        </div>
 
             <h4>Quiz time!</h4>
             <repeat group="{{ @questions }}" value="{{ @question }}">
@@ -26,7 +26,6 @@
             </div>
             <br>
     </repeat>
-        <img src="{{ @moduleData.image }}">
     <button onclick="checkAllAnswers()">Check all answers</button>
     </div>
 </div>
