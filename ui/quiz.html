@@ -1,0 +1,70 @@
+
+
+
+<div class="quiz_backg">
+    <div class="quiz_frame">
+            <h3>Quiz time!</h3>
+            <repeat group="{{ @questions }}" value="{{ @question }}">
+            <div>
+            <p>{{ trim(@question.question) }}</p>
+            <label class="option"><input type="radio" name="{{ @question.question_id }}" value="1">  A. {{ @question.option_1 }}</label>
+            <label class="option"><input type="radio" name="{{ @question.question_id }}" value="2">  B. {{ @question.option_2 }}</label>
+            <label class="option"><input type="radio" name="{{ @question.question_id }}" value="3">  C. {{ @question.option_3 }}</label>
+            <label class="option"><input type="radio" name="{{ @question.question_id }}" value="4">  D. {{ @question.option_4 }}</label>
+            <br>
+                <div class="answers" id="{{ @question.question_id }}"></div>
+
+            </div>
+            <br>
+    </repeat>
+    <button onclick="checkAllAnswers()">Check all answers</button>
+    </div>
+</div>
+
+
+<script src="{{@BASE}}/ui/js/jquery.min.js"></script>
+<script>
+
+    function checkAllAnswers() {
+        for (var i = 1; i <= 5; i++) {
+            checkAnswers(i);
+        }
+    }
+
+    function checkAnswers(qid) {
+
+        $.ajax({
+            type: 'GET',
+            url: "{{ @BASE }}/quiz/" + qid,
+            success: function(response) {
+                // https://stackoverflow.com/questions/596351/how-can-i-know-which-radio-button-is-selected-via-jquery
+                let selected = $('input[name='+ qid +']:checked').val();
+
+                if (parseInt(selected) === parseInt(response)) {
+                    $('#' + qid).html('Correct!');
+                } else {
+                    switch (parseInt(response)) {
+                        case 1:
+                            option = "A";
+                            break;
+                        case 2:
+                            option = 'B';
+                            break;
+                        case 3:
+                            option = 'C';
+                            break;
+                        case 4:
+                            option = 'D';
+                            break;
+                    }
+                    $('#' + qid).html('Incorrect! The correct answer is option '+ option);
+                }
+
+            },
+            failure: function() {
+                console.log("failure");
+            },
+        });
+    }
+</script>
+

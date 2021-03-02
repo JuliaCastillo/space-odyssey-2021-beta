@@ -1,0 +1,25 @@
+<!-- 
+A very simple home page View template:
+just contains a link to the form that we will
+use for collecting data.
+ -->
+<div class="quiz_backg">
+
+    <div class="quiz_frame">
+
+    <h1>Choose a module/level:</h1>
+
+    <form id="form1" name="form1" method="post" action="{{ @BASE }}/simpleHome">
+        <select name="module" size="1">
+            <repeat group="{{ @modules }}" value="{{ @module }}">
+                <option value="{{ @module.module_id }}">
+                    {{ @module.module_name }}
+                </option>
+            </repeat>
+        </select>
+
+        <p><input type="submit" name="select" value="Select" /></p>
+    </form>
+    </div>
+</div>
+
