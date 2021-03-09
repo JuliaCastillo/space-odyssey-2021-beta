@@ -1,9 +1,16 @@
 
+
+
 <div class="quiz_backg">
-<div class="blob"></div>
-<div class="quiz_text">
+
+<<div class="blob">
+    <img src="assets/img/blob.svg">
+</div>
+
+    <div class="quiz_text">
 
         <h2>Welcome to {{ @moduleData.module_name }}!</h2>
+
 
         <button id="show_reading">Tell me something about {{ @moduleData.module_name }}</button>
         <div id="reading" style="display:none;">
@@ -26,9 +33,6 @@
     </repeat>
     <button onclick="checkAllAnswers()">Check all answers</button>
 
-    <div class="blob">
-        <img src="assets/img/blob.svg">
-    </div>
 
 
 </div>
