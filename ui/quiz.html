@@ -1,10 +1,8 @@
 
-
-
 <div class="quiz_backg">
+<div class="blob"></div>
+<div class="quiz_text">
 
-
-    <div class="quiz_frame">
         <h2>Welcome to {{ @moduleData.module_name }}!</h2>
 
         <button id="show_reading">Tell me something about {{ @moduleData.module_name }}</button>
@@ -12,9 +10,9 @@
             <p>{{ @moduleData.module_text }}</p>
         </div>
 
-            <h4>Quiz time!</h4>
+            <h5>Quiz time!</h5>
             <repeat group="{{ @questions }}" value="{{ @question }}">
-            <div>
+        <div>
             <p>{{ trim(@question.question) }}</p>
             <label class="option"><input type="radio" name="{{ @question.question_id }}" value="1">  A. {{ @question.option_1 }}</label>
             <label class="option"><input type="radio" name="{{ @question.question_id }}" value="2">  B. {{ @question.option_2 }}</label>
@@ -27,8 +25,14 @@
             <br>
     </repeat>
     <button onclick="checkAllAnswers()">Check all answers</button>
+
+    <div class="blob">
+        <img src="assets/img/blob.svg">
     </div>
+
+
 </div>
+
 
 
 <script src="{{@BASE}}/ui/js/jquery.min.js"></script>
