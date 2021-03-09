@@ -45,21 +45,21 @@
 
 
 
-            <repeat group="{{ @questions }}" value="{{ @question }}">
-        <div>
+        <repeat group="{{ @questions }}" value="{{ @question }}">
+            <div>
             <p>{{ trim(@question.question) }}</p>
             <label class="option"><input type="radio" name="{{ @question.question_id }}" value="1">  A. {{ @question.option_1 }}</label>
             <label class="option"><input type="radio" name="{{ @question.question_id }}" value="2">  B. {{ @question.option_2 }}</label>
             <label class="option"><input type="radio" name="{{ @question.question_id }}" value="3">  C. {{ @question.option_3 }}</label>
             <label class="option"><input type="radio" name="{{ @question.question_id }}" value="4">  D. {{ @question.option_4 }}</label>
             <br>
-                <div class="answers" id="{{ @question.question_id }}"></div>
+            <div class="answers" id="{{ @question.question_id }}"></div>
 
             </div>
             <br>
-    </repeat>
-    <button class="quiz_button" onclick="checkAllAnswers()"> Check all answers </button>
-
+        </repeat>
+        <button class="quiz_button" onclick="checkAllAnswers()"> Check all answers </button>
+    </div>
 
     <<div class="blob">
         <img src="assets/img/blob.svg">
