@@ -3,21 +3,43 @@
 
 <div class="quiz_backg">
 
-<<div class="blob">
-    <img src="assets/img/blob.svg">
-</div>
 
     <div class="quiz_text">
 
-        <h2>Welcome to {{ @moduleData.module_name }}!</h2>
+        <h2><i><strong>Welcome to {{ @moduleData.module_name }}!</strong></i></h2>
 
 
-        <button id="show_reading">Tell me something about {{ @moduleData.module_name }}</button>
+        <button id="show_reading">I want to read something about {{ @moduleData.module_name }} first!</button>
         <div id="reading" style="display:none;">
             <p>{{ @moduleData.module_text }}</p>
         </div>
 
-            <h5>Quiz time!</h5>
+            <h3><i>Quiz time!</i></h3>
+
+
+
+        <!-- ======= MEG-WORK IN PROGRESS ======= -->
+        <div class="wrapper">
+            <div class="title">Select your option</div>
+            <div class="box">
+                <label for="" class="option-1">
+                <div class="dot"></div>
+            </label>
+                <label for="" class="option-2">
+                    <div class="dot"></div>
+                </label>
+                <label for="" class="option-3">
+                    <div class="dot"></div>
+                </label>
+
+                <label for="" class="option-4">
+                    <div class="dot"></div>
+                </label>
+        <!-- ======= MEG-END WORK IN PROGRESS ======= -->
+
+
+
+
             <repeat group="{{ @questions }}" value="{{ @question }}">
         <div>
             <p>{{ trim(@question.question) }}</p>
@@ -31,9 +53,12 @@
             </div>
             <br>
     </repeat>
-    <button onclick="checkAllAnswers()">Check all answers</button>
+    <button id="show_reading" onclick="checkAllAnswers()"> Check all answers </button>
 
 
+    <<div class="blob">
+        <img src="assets/img/blob.svg">
+    </div>
 
 </div>
 
