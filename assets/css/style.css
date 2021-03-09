@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-scrolled, #header.header-inner-pages {
-  background: #0c5460;
+  background: #72a25a;
   padding: 12px 0;
 }
 
@@ -606,7 +606,7 @@ section {
 }
 
 .section-bg {
-  background-color: #FFFFFF;
+  background: linear-gradient(90deg, rgba(237,196,164,1) 21%, rgba(247,191,172,1) 46%, rgba(244,228,146,1) 91%);
 }
 
 .section-title {
@@ -643,6 +643,7 @@ section {
 --------------------------------------------------------------*/
 .about {
   padding: 120px 0;
+  background: linear-gradient(90deg, rgba(88,156,148,1) 21%, rgba(138,193,161,1) 46%, rgba(244,228,146,1) 91%);
 }
 
 .about .content h3 {
@@ -680,12 +681,12 @@ section {
   border-radius: 5px;
   transition: 0.5s;
   color: #fff;
-  background: linear-gradient(45deg, #0A344A 0%, #7b27d8 100%);
+  background: linear-gradient(90deg, rgba(88,156,148,1) 21%, rgba(138,193,161,1) 46%, rgba(244,228,146,1) 91%);
   position: relative;
 }
 
 .about .content .read-more:hover {
-  background: linear-gradient(180deg, #0A344A 0%, #7b27d8 100%);
+  background: linear-gradient(90deg, rgba(237,196,164,1) 21%, rgba(247,191,172,1) 46%, rgba(244,228,146,1) 91%);
 }
 
 .about .content .read-more i {
