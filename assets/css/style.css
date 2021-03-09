@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
-    transition-delay: 0 !important;
+    transition-delay: 0s !important;
   }
 }
 
@@ -350,7 +350,7 @@ Bootstrap note: Mobile Navigation */
 }
 
 
-#show_reading {
+.quiz_button {
   background: linear-gradient(90deg, rgba(22,92,103,1) 21%, rgba(12,78,112,1) 46%, rgba(44,73,100,1) 91%);
   border: none;
   color: white;
@@ -370,9 +370,9 @@ Bootstrap note: Mobile Navigation */
 
 .wrapper {
   width: 350px;
-  background: ffffff;
+  background: #ffffff;
   border-radius: 10px;
-  border-shadow: 5px 5px 30px rgba (0,0,0,0.2)
+  border-shadow: 5px 5px 30px rgba(0,0,0,0.2);
 }
 
 .wrapper .title {
@@ -416,7 +416,7 @@ Bootstrap note: Mobile Navigation */
   content: "";
   top: 50%;
   left: 50%;
-  transform: translate (-50%, -50%)
+  transform: translate(-50%, -50%);
   width: 9px;
   height: 9px;
   background: #1c7430;

@@ -9,7 +9,7 @@
         <h2><i><strong>Welcome to {{ @moduleData.module_name }}!</strong></i></h2>
 
 
-        <button id="show_reading">I want to read something about {{ @moduleData.module_name }} first!</button>
+        <button id="show_reading" class="quiz_button">I want to read something about {{ @moduleData.module_name }} first!</button>
         <div id="reading" style="display:none;">
             <p>{{ @moduleData.module_text }}</p>
         </div>
@@ -38,6 +38,8 @@
                 <label for="" class="option-4">
                     <div class="dot"></div>
                 </label>
+            </div>
+        </div>
         <!-- ======= MEG-END WORK IN PROGRESS ======= -->
 
 
@@ -56,7 +58,7 @@
             </div>
             <br>
     </repeat>
-    <button id="show_reading" onclick="checkAllAnswers()"> Check all answers </button>
+    <button class="quiz_button" onclick="checkAllAnswers()"> Check all answers </button>
 
 
     <<div class="blob">
