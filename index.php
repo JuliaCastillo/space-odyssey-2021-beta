@@ -29,6 +29,10 @@ new \DB\SQL\Session($f3->get('DB'));
 
 $f3->route('GET /',
     function ($f3) {
+        $controller = new SimpleController;
+        $modules = $controller->getModules();
+
+        $f3->set("modules", $modules);
         $f3->set('html_title','2021 Space Odyssey');
         $f3->set('content','index.html');
         echo Template::instance()->render('layout.html');
@@ -47,11 +51,11 @@ $f3->route('GET /simpleHome',
   }
 );
 
-$f3->route('POST /simpleHome',
+$f3->route('POST /test',
     function ($f3) {
-        //$controller = new SimpleController;
         $f3->set('SESSION.currentModule', $f3->get('POST.module'));
-        $f3->reroute('/quiz');
+        //$f3->reroute('/quiz');
+        echo('/quiz');
     }
 );
 

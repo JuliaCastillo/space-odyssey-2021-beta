@@ -51,10 +51,9 @@
                   <nav class="nav-menu d-none d-lg-block">
                      <ul>
                         <li><a href="{{ @BASE }}/">Home</a></li>
+                        <li><a href="{{ @BASE }}/#modules">Our Modules</a></li>
                         <li><a href="{{ @BASE }}/#about">Our Story</a></li>
                         <li><a href="{{ @BASE }}/#services">Our Team</a></li>
-                        <li><a href="{{ @BASE }}/simpleHome">Our Modules!</a></li>
-
                      </ul>
                   </nav><!-- .nav-menu -->
 
@@ -70,6 +69,19 @@
       <include href="{{ @content }}" />
 
 
+    <script>
+        function moduleClick(clicked_module) {
+            // from https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
+            $.post("{{ @BASE }}/test", {
+                module: clicked_module,
+            },
+            function(result){
+                // from https://love2dev.com/blog/ways-to-use-javascript-redirect-to-another-page/
+                window.location.replace("{{ @BASE }}" + result);
+            });
+        };
+    </script>
 
    </body>
+
 </html>

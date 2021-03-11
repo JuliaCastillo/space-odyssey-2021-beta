@@ -40,6 +40,21 @@
   <!-- End Hero -->
 
 
+    <!-- ======= Modules Section ======= -->
+
+    <section id="modules">
+      <div class="container">
+        <div class="row">
+          <repeat group="{{ @modules }}" value="{{ @module }}">
+            <div class="col-lg-3" id="{{ @module.module_id }}" onclick="moduleClick(this.id)">
+              <img class="module_image" src="{{ @module.image }}">
+              <p>{{ @module.module_name }}</p>
+            </div>
+          </repeat>
+        </div>
+      </div>
+    </section>
+
 
     <!-- ======= Our Story Section ======= -->
    
@@ -69,7 +84,7 @@
 
     <!-- End About Section -->
 
-  <
+
 
     <!-- ======= Our Team ======= -->
     <section id="services" class="services section-bg">
@@ -149,6 +164,7 @@
             <p>
             <a href="assets/img/DWD_Report_1.pdf">Link to Report</a>
             </p>
+          </div>
 
         </div>
       </div>
@@ -174,6 +190,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
 
 </body>
 </html>
