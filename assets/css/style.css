@@ -491,7 +491,7 @@ Bootstrap note: Mobile Navigation */
 --------------------------------------------------------------*/
 section {
   padding: 100px 0;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .section-bg {
