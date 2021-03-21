@@ -8,6 +8,7 @@ class SimpleController {
 	private $questionsMapper;
 	private $optionsMapper;
 	private $answersMapper;
+	private $loginMapper;
 
 	
 	public function __construct() {
@@ -18,6 +19,7 @@ class SimpleController {
 		$this->questionsMapper = new DB\SQL\Mapper($f3->get('DB'), 'quiz_questions');
 		$this->optionsMapper = new DB\SQL\Mapper($f3->get('DB'), 'quiz_options');
 		$this->answersMapper = new DB\SQL\Mapper($f3->get('DB'), 'quiz_answers');
+		$this->loginMapper = new DB\SQL\Mapper($f3->get('DB'), 'user_login');
 	}
 	
 	public function putIntoDatabase($data) {	
@@ -60,6 +62,26 @@ class SimpleController {
 			$opt = $array["option_number"];
 		}
 		return $opt;
+	}
+
+	public function loginUser($user, $pwd) {		// very simple login -- no use of encryption, hashing etc.
+		$auth = new \Auth($this->loginMapper, array('id'=>'username', 'pw'=>'password'));	// fields in table
+		return $auth->login($user, $pwd); 			// returns true on successful login
+	}
+
+	public function checkIfUserExists($user) {
+		$this->loginMapper->load(['username LIKE ?', $user]);
+		$username = $this->loginMapper->username;
+		if ($user == $username) {
+			return true;
+		}
+		return false;
+	}
+
+	public function addNewUser($user, $pwd) {
+		$this->loginMapper->username = $user;
+		$this->loginMapper->password = $pwd;
+		$this->loginMapper->save();
 	}
 	
 }

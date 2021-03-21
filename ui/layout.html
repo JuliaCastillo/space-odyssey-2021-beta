@@ -37,36 +37,72 @@
 
 
    <body>
+   <check if="{{ @SESSION.userName=='UNSET' }}">
+       <true>
+           <header class="header fixed-top ">
+               <div class="container-fluid">
 
-<!--    ======= Header =======-->
-      <header id="header" class="fixed-top ">
-         <div class="container-fluid">
+                   <div class="row justify-content-center">
+                       <div class="col-xl-9 d-flex align-items-center">
+                           <h1 class="logo mr-auto"><a href="{{ @BASE }}/" class="logo mr-auto"><img src="assets/img/Logo.gif" alt="Logo" class="img-fluid"></a></h1>
+                           <!-- MN added logo instead of text -->
 
-            <div class="row justify-content-center">
-               <div class="col-xl-9 d-flex align-items-center">
-                  <h1 class="logo mr-auto"><a href="{{ @BASE }}/" class="logo mr-auto"><img src="assets/img/Logo.gif" alt="Logo" class="img-fluid"></a></h1>
-                  <!-- MN added logo instead of text -->
+                           <!-- MN NAV BAR -->
+                           <nav class="nav-menu d-none d-lg-block">
+                               <ul>
+                                   <li><a href="{{ @BASE }}/">Home</a></li>
+                                   <li><a href="{{ @BASE }}/#modules">Our Modules</a></li>
+                                   <li><a href="{{ @BASE }}/#about">Our Story</a></li>
+                                   <li><a href="{{ @BASE }}/#services">Our Team</a></li>
+                               </ul>
+                           </nav><!-- .nav-menu -->
 
-                  <!-- MN NAV BAR -->
-                  <nav class="nav-menu d-none d-lg-block">
-                     <ul>
-                        <li><a href="{{ @BASE }}/">Home</a></li>
-                        <li><a href="{{ @BASE }}/#modules">Our Modules</a></li>
-                        <li><a href="{{ @BASE }}/#about">Our Story</a></li>
-                        <li><a href="{{ @BASE }}/#services">Our Team</a></li>
-                     </ul>
-                  </nav><!-- .nav-menu -->
+                           <!--          <a href="#about" class="get-started-btn scrollto">Start Exploring</a>-->
 
-                  <!--          <a href="#about" class="get-started-btn scrollto">Start Exploring</a>-->
-                  <a href="{{ @BASE }}/simpleHome" class="get-started-btn scrollto">Start Exploring</a>
+                           <a href="{{ @BASE }}/login/in" class="get-started-btn scrollto">Login</a>
+
+
+                       </div>
+                   </div>
+
                </div>
-            </div>
-
-         </div>
-      </header><!-- End Header -->
+           </header><!-- End Header -->
 
 
-      <include href="{{ @content }}" />
+           <include href="{{ @content }}" />
+       </true>
+       <false>
+<!--    ======= Header =======-->
+          <header class="header fixed-top">
+             <div class="container-fluid">
+
+                <div class="row justify-content-center">
+                   <div class="col-xl-9 d-flex align-items-center">
+                      <h1 class="logo mr-auto"><a href="{{ @BASE }}/" class="logo mr-auto"><img src="assets/img/Logo.gif" alt="Logo" class="img-fluid"></a></h1>
+                      <!-- MN added logo instead of text -->
+
+                      <!-- MN NAV BAR -->
+                      <nav class="nav-menu d-none d-lg-block">
+                         <ul>
+                            <li><a href="{{ @BASE }}/">Home</a></li>
+                            <li><a href="{{ @BASE }}/#modules">Our Modules</a></li>
+                            <li><a href="{{ @BASE }}/#about">Our Story</a></li>
+                            <li><a href="{{ @BASE }}/#services">Our Team</a></li>
+                         </ul>
+                      </nav><!-- .nav-menu -->
+
+                      <!--          <a href="#about" class="get-started-btn scrollto">Start Exploring</a>-->
+                       <a href="{{ @BASE }}/logout" class="get-started-btn scrollto">Logout</a>
+                   </div>
+                </div>
+
+             </div>
+          </header><!-- End Header -->
+
+
+          <include href="{{ @content }}" />
+       </false>
+   </check>
 
 
     <script>

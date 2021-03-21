@@ -1,0 +1,32 @@
+<div class="quiz_backg">
+
+
+    <div class="quiz_text">
+
+        <p>{{ @message }}</p>
+        <form id="register_form" name="register_form" method="post" action="{{ @BASE }}/register">
+            <input name="uname" required="required" type="text" placeholder="Enter your user name" id="name" size="50" />
+            <br />
+            <input name="password" required="required" type="password" placeholder="Enter your password" id="pass" size="50" />
+            <br />
+            <input name="password_confirm" required="required" type="password" placeholder="Confirm your password" id="password_confirm" size="50" oninput="check(this)" />
+            <p>
+                <input type="submit" name="Submit" value="Register" />
+            </p>
+        </form>
+
+    </div>
+</div>
+
+<script language='javascript' type='text/javascript'>
+
+    // Password confirmation using code from https://stackoverflow.com/questions/9142527/can-you-require-two-form-fields-to-match-with-html5
+    function check(input) {
+        if (input.value != document.getElementById('pass').value) {
+            input.setCustomValidity('Password Must be Matching.');
+        } else {
+            // input is valid -- reset the error message
+            input.setCustomValidity('');
+        }
+    }
+</script>

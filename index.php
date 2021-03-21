@@ -20,6 +20,7 @@ $f3->set('DEBUG',3);		// set maximum debug level
 $f3->set('UI','ui/');		// folder for View templates
 
 new \DB\SQL\Session($f3->get('DB'));
+if (!$f3->exists('SESSION.userName')) $f3->set('SESSION.userName', 'UNSET');
 
   /////////////////////////////////////////////
  // Simple Example URL application routings //
@@ -39,6 +40,82 @@ $f3->route('GET /',
 //        echo Template::instance()->render('index.html');
     }
 );
+
+$f3->route('GET /login/@msg',				// @msg is a parameter that tells us which message to give the user
+    function($f3) {
+        switch ($f3->get('PARAMS.msg')) {		// PARAMS.msg is whatever was the last element of the URL
+            case "err":
+                $msg = "Wrong user name and/or password; please try again.";
+                break;
+            case "lo":
+                $msg = "You have been logged out.";
+                break;
+            default:						// this is the case if neither of the above cases is matched
+                $msg = "Login here";
+        }
+        $f3->set('html_title', 'Simple Login Form');
+        $f3->set('message', $msg);				// set message that will be shown to user in the login.html template
+        $f3->set('thisIsLoginPage', 'true');	// set flag that will be tested in layout.html, to say this is login page
+        $f3->set('content', 'login.html');		// the login form that will be shown to the user
+        echo template::instance()->render('layout.html');
+    }
+);
+
+$f3->route('POST /login',
+    function($f3) {
+        $controller = new SimpleController;
+        if ($controller->loginUser($f3->get('POST.uname'), $f3->get('POST.password'))) {		// user is recognised
+            $f3->set('SESSION.userName', $f3->get('POST.uname'));			// note that this is a global that will be available elsewhere
+            $f3->reroute('/');							// will always go to simpleform after successful login
+            echo template::instance()->render('layout.html');
+        }
+        else
+            $f3->reroute('/login/err');		// return to login page with the message that there was an error in the credentials
+    }
+);
+
+$f3->route('GET /register/@msg',				// @msg is a parameter that tells us which message to give the user
+    function($f3) {
+        switch ($f3->get('PARAMS.msg')) {		// PARAMS.msg is whatever was the last element of the URL
+            case "exists":
+                $msg = "This user name already exists, please choose a different one.";
+                break;
+            default:						// this is the case if neither of the above cases is matched
+                $msg = "Register here";
+        }
+        $f3->set('html_title', 'Register');
+        $f3->set('message', $msg);				// set message that will be shown to user in the login.html template
+        //$f3->set('thisIsLPage', 'true');	// set flag that will be tested in layout.html, to say this is login page
+        $f3->set('content', 'register.html');		// the login form that will be shown to the user
+        echo template::instance()->render('layout.html');
+    }
+);
+
+$f3->route('POST /register',
+    function($f3) {
+        $controller = new SimpleController;
+        if ($controller->checkIfUserExists($f3->get('POST.uname'))) {
+            $f3->reroute('/register/exists');
+        } else {
+            $controller->addNewUser($f3->get('POST.uname'), $f3->get('POST.password'));
+            $f3->set('SESSION.userName', $f3->get('POST.uname'));			// note that this is a global that will be available elsewhere
+            $f3->reroute('/');
+//            $msg = $controller->checkIfUserExists($f3->get('POST.uname'));
+//            $f3->set('html_title', 'Register');
+//            $f3->set('message', $msg);
+//            $f3->set('content', 'register.html');
+            echo template::instance()->render('layout.html');
+        }
+    }
+);
+
+$f3->route('GET /logout',
+    function($f3) {
+        $f3->set('SESSION.userName', 'UNSET');
+        $f3->reroute('/');
+    }
+);
+
 $f3->route('GET /simpleHome',
   function ($f3) {
       $controller = new SimpleController;
@@ -66,58 +143,6 @@ $f3->route('GET /simpleform',
     $f3->set('content','simpleform.html');
     echo template::instance()->render('layout.html');
   }
-);
-
-// When using POST (e.g.  form is submitted), invoke the controller, which will process
-// any data then return info we want to display. We display
-// the info here via the response.html template
-$f3->route('POST /simpleform',
-  function($f3) {
-	$formdata = array();			// array to pass on the entered data in
-	$formdata["name"] = $f3->get('POST.name');			// whatever was called "name" on the form
-	$formdata["colour"] = $f3->get('POST.colour');		// whatever was called "colour" on the form
-		
-  	$controller = new SimpleController;
-    $controller->putIntoDatabase($formdata);
-  	
-	$f3->set('formData',$formdata);		// set info in F3 variable for access in response template
-	
-    $f3->set('html_title','Simple Example Response');
-	$f3->set('content','response.html');
-	echo template::instance()->render('layout.html');
-  }
-);
-
-$f3->route('GET /dataView',
-  function($f3) {
-  	$controller = new SimpleController;
-    $alldata = $controller->getData();
-    
-    $f3->set("dbData", $alldata);
-    $f3->set('html_title','Viewing the data');
-    $f3->set('content','dataView.html');
-    echo template::instance()->render('layout.html');
-  }
-);
-
-$f3->route('GET /editView',				// exactly the same as dataView, apart from the template used
-  function($f3) {
-  	$controller = new SimpleController;
-    $alldata = $controller->getData();
-    
-    $f3->set("dbData", $alldata);
-    $f3->set('html_title','Viewing the data');
-    $f3->set('content','editView.html');
-    echo template::instance()->render('layout.html');
-  }
-);
-
-$f3->route('POST /editView',		// this is used when the form is submitted, i.e. method is POST
-  function($f3) {
-  	$controller = new SimpleController;
-    $controller->deleteFromDatabase($f3->get('POST.toDelete'));		// in this case, delete selected data record
-
-	$f3->reroute('/editView');  }		// will show edited data (GET route)
 );
 
 

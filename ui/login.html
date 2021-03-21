@@ -1,0 +1,21 @@
+
+<div class="quiz_backg">
+
+
+    <div class="quiz_text">
+
+        <p>{{ @message }}</p>
+        <form id="form1" name="form1" method="post" action="{{ @BASE }}/login">
+            <input name="uname" type="text" placeholder="Enter your user name" id="name" size="50" />
+            <br />
+            <input name="password" type="password" placeholder="Enter your password" id="pass" size="50" />
+            <p>
+                <input type="submit" name="Submit" value="Login" />
+            </p>
+        </form>
+
+        <p>You don't have an account yet?</p>
+        <a href="{{ @BASE }}/register/in" class="get-started-btn">Register</a>
+
+    </div>
+</div>
