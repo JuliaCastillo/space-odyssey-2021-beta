@@ -54,14 +54,16 @@ class SimpleController {
 		return $this->optionsMapper->find(['question_id=?', $questionId]);
 	}
 
-	public function getCorrectOption($questionId) {
-		$list =  $this->answersMapper->find(['question_id=?', $questionId]);
+	public function getCorrectOption($questionNumber, $module) {
+		//$list =  $this->answersMapper->find(['question_id=?', $questionId]);
+		$this->answersMapper->load(array('module=? and question_number=?', $module, $questionNumber));
 		//$record = $this->answersMapper->select($record,'option_number');
-		foreach ($list as $record) {
-			$array = $this->answersMapper->cast($record);
-			$opt = $array["option_number"];
-		}
-		return $opt;
+//		foreach ($list as $record) {
+//			$array = $this->answersMapper->cast($record);
+//			$opt = $array["option_number"];
+//		}
+//		return $opt;
+		return $this->answersMapper->option_number;
 	}
 
 	public function loginUser($user, $pwd) {		// very simple login -- no use of encryption, hashing etc.

@@ -372,6 +372,10 @@ Bootstrap note: Mobile Navigation */
   line-height: 150%;
 }
 
+.answers {
+  color: #ffa76e;
+}
+
 
 
 /*--------------------------------------------------------------
@@ -536,8 +540,16 @@ section {
 # Modules
 --------------------------------------------------------------*/
 .module_image {
-  height: 200px;
-  width: 100px;
+  height: 390px;
+  width: 225px;
+  position: relative;
+}
+
+.module_stars {
+  position: absolute;
+  height: 390px;
+  width: 225px;
+  left: 14px;
 }
 
 

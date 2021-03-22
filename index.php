@@ -32,6 +32,9 @@ $f3->route('GET /',
     function ($f3) {
         $controller = new SimpleController;
         $modules = $controller->getModules();
+        if ($f3->get('SESSION.userName') != 'UNSET') {
+
+        }
 
         $f3->set("modules", $modules);
         $f3->set('html_title','2021 Space Odyssey');
@@ -128,7 +131,7 @@ $f3->route('GET /simpleHome',
   }
 );
 
-$f3->route('POST /test',
+$f3->route('POST /',
     function ($f3) {
         $f3->set('SESSION.currentModule', $f3->get('POST.module'));
         //$f3->reroute('/quiz');
@@ -176,7 +179,7 @@ $f3->route('GET /quiz/@query',
     function ($f3) {
         $q = $f3->get('PARAMS.query');
         $controller = new SimpleController;
-        $correctAnswer = $controller->getCorrectOption($q);
+        $correctAnswer = $controller->getCorrectOption($q, $f3->get('SESSION.currentModule'));
         echo $correctAnswer;
     }
 );

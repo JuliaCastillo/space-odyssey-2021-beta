@@ -9,27 +9,45 @@
         <h2><i><strong>Welcome to {{ @moduleData.module_name }}!</strong></i></h2>
 
 
-        <button id="show_reading" class="quiz_button">I want to read something about {{ @moduleData.module_name }} first!</button>
+        <button id="show_reading" class="quiz_button">Teach me something about {{ @moduleData.module_name }} first!</button>
+
         <div id="reading" style="display:none;">
-            <p>{{ @moduleData.module_text }}</p>
+            <br/>
+            <p>{{ @moduleData.module_text | raw }}</p>
         </div>
 
-            <h3><i>Quiz time!</i></h3>
-
-
-
+        <br/>
+        <br/>
+        <h3><i>Quiz time!</i></h3>
+        <br/>
 
 
 
         <repeat group="{{ @questions }}" value="{{ @question }}">
             <div>
             <p>{{ trim(@question.question) }}</p>
-            <label class="option"><input type="radio" name="{{ @question.question_id }}" value="1">  A. {{ @question.option_1 }}</label>
-            <label class="option"><input type="radio" name="{{ @question.question_id }}" value="2">  B. {{ @question.option_2 }}</label>
-            <label class="option"><input type="radio" name="{{ @question.question_id }}" value="3">  C. {{ @question.option_3 }}</label>
-            <label class="option"><input type="radio" name="{{ @question.question_id }}" value="4">  D. {{ @question.option_4 }}</label>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="option"><input type="radio" name="{{ @question.question_number }}" value="1">  A. {{ @question.option_1 }}</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label class="option"><input type="radio" name="{{ @question.question_number }}" value="2">  B. {{ @question.option_2 }}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label class="option"><input type="radio" name="{{ @question.question_number }}" value="3">  C. {{ @question.option_3 }}</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <label class="option"><input type="radio" name="{{ @question.question_number }}" value="4">  D. {{ @question.option_4 }}</label>
+                    </div>
+                </div>
+
+
+<!--            <label class="option"><input type="radio" name="{{ @question.question_number }}" value="3">  C. {{ @question.option_3 }}</label>-->
+<!--            <label class="option"><input type="radio" name="{{ @question.question_number }}" value="4">  D. {{ @question.option_4 }}</label>-->
             <br>
-            <div class="answers" id="{{ @question.question_id }}"></div>
+            <div class="answers" id="{{ @question.question_number }}"></div>
 
             </div>
             <br>
@@ -37,9 +55,9 @@
         <button class="quiz_button" onclick="checkAllAnswers()"> Check all answers </button>
     </div>
 
-    <<div class="blob">
-        <img src="assets/img/blob.svg">
-    </div>
+<!--    <div class="blob">-->
+<!--        <img src="assets/img/blob.svg">-->
+<!--    </div>-->
 
 </div>
 
@@ -68,6 +86,8 @@
             success: function(response) {
                 // https://stackoverflow.com/questions/596351/how-can-i-know-which-radio-button-is-selected-via-jquery
                 let selected = $('input[name='+ qid +']:checked').val();
+                console.log('Selected: '+ selected);
+                console.log('Correct: ' + response);
 
                 if (parseInt(selected) === parseInt(response)) {
                     $('#' + qid).html('Correct!');
