@@ -20,6 +20,7 @@ class SimpleController {
 		$this->optionsMapper = new DB\SQL\Mapper($f3->get('DB'), 'quiz_options');
 		$this->answersMapper = new DB\SQL\Mapper($f3->get('DB'), 'quiz_answers');
 		$this->loginMapper = new DB\SQL\Mapper($f3->get('DB'), 'user_login');
+		$this->progressMapper = new DB\SQL\Mapper($f3->get('DB'), 'user_progress');
 	}
 	
 	public function putIntoDatabase($data) {	
@@ -84,6 +85,11 @@ class SimpleController {
 		$this->loginMapper->username = $user;
 		$this->loginMapper->password = $pwd;
 		$this->loginMapper->save();
+	}
+
+	public function getUserProgress($user, $mid) {
+		$this->progressMapper->load(['username LIKE ?', $user]);
+		return $this->progressMapper->$mid;
 	}
 	
 }

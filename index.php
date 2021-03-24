@@ -32,15 +32,24 @@ $f3->route('GET /',
     function ($f3) {
         $controller = new SimpleController;
         $modules = $controller->getModules();
-        if ($f3->get('SESSION.userName') != 'UNSET') {
-
-        }
+//        if ($f3->get('SESSION.userName') != 'UNSET') {
+//            $progress = $controller->getUserProgress($f3->get('SESSION.userName'));
+//            $f3->set("progress", $progress);
+//        }
 
         $f3->set("modules", $modules);
         $f3->set('html_title','2021 Space Odyssey');
         $f3->set('content','index.html');
         echo Template::instance()->render('layout.html');
-//        echo Template::instance()->render('index.html');
+    }
+);
+
+$f3->route('GET /progress/@mid',
+    function ($f3) {
+        $mid = $f3->get('PARAMS.mid');
+        $controller = new SimpleController;
+        $progress = $controller->getUserProgress($f3->get('SESSION.userName'), $mid);
+        echo $progress;
     }
 );
 
@@ -70,7 +79,7 @@ $f3->route('POST /login',
         if ($controller->loginUser($f3->get('POST.uname'), $f3->get('POST.password'))) {		// user is recognised
             $f3->set('SESSION.userName', $f3->get('POST.uname'));			// note that this is a global that will be available elsewhere
             $f3->reroute('/');							// will always go to simpleform after successful login
-            echo template::instance()->render('layout.html');
+            //echo template::instance()->render('layout.html');
         }
         else
             $f3->reroute('/login/err');		// return to login page with the message that there was an error in the credentials

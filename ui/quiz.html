@@ -86,8 +86,6 @@
             success: function(response) {
                 // https://stackoverflow.com/questions/596351/how-can-i-know-which-radio-button-is-selected-via-jquery
                 let selected = $('input[name='+ qid +']:checked').val();
-                console.log('Selected: '+ selected);
-                console.log('Correct: ' + response);
 
                 if (parseInt(selected) === parseInt(response)) {
                     $('#' + qid).html('Correct!');

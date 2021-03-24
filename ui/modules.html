@@ -38,8 +38,9 @@
 
                     <repeat group="{{ @modules }}" value="{{ @module }}">
                         <div class="col-lg-3" id="l{{ @module.module_id }}" onclick="moduleClick(this.id)">
+<!--                            <img class="module_image" src="{{ @module.image }}">-->
                             <img class="module_image" src="{{ @module.image }}">
-                            <img class="module_stars" src="assets/img/module-stars/Stars0_full.svg">
+                            <img class="module_stars" id="image{{ @module.module_id }}" src="assets/img/module-stars/Stars0_full.svg">
 
                             <!--              <p>{{ @module.module_name }}</p>-->
                         </div>
@@ -51,7 +52,7 @@
 </check>
 
 
-
+<script src="{{@BASE}}/ui/js/jquery.min.js"></script>
 <script>
 
     function moduleClick(clicked_module) {
@@ -63,7 +64,36 @@
                 // from https://love2dev.com/blog/ways-to-use-javascript-redirect-to-another-page/
                 window.location.replace("{{ @BASE }}" + result);
             });
+    }
+    var stars = {
+        0: "assets/img/module-stars/Stars0_full.svg",
+        1: "assets/img/module-stars/Stars0_full.svg",
+        2: "assets/img/module-stars/Stars0_full.svg",
+        3: "assets/img/module-stars/Stars0_full.svg",
+        4: "assets/img/module-stars/Stars0_full.svg",
+        5: "assets/img/module-stars/Stars5_full.svg"
     };
+
+    function loadUserProgress(module_id){
+        const stars_image = document.getElementById('image' + module_id);
+        $.ajax({
+            type: 'GET',
+            url: "{{ @BASE }}/progress/" + module_id,
+            success: function(response) {
+                console.log(stars[parseInt(response)]);
+
+            },
+            failure: function() {
+                console.log("Failure loading user progress");
+            },
+        });
+    }
+
+    $(document).ready(function(){
+        for (var i = 1; i <= 2; i++) {
+           loadUserProgress(i);
+        }
+    });
 
 
 </script>
