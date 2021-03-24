@@ -1,8 +1,8 @@
 
 
 <!-- ======= Modules Section ======= -->
-<!--<check if="{{ @SESSION.userName=='UNSET' }}">-->
-<!--    <true>-->
+<check if="{{ @SESSION.userName=='UNSET' }}">
+    <true>
         <section class="modules section-bg">
             <div class="container">
 
@@ -23,32 +23,32 @@
                 </div>
             </div>
         </section>
-<!--    </true>-->
-<!--    <false>-->
-<!--        <section class="modules section-bg" onload="loadUserProgress()">-->
-<!--            <div class="container">-->
+    </true>
+    <false>
+        <section class="modules section-bg">
+            <div class="container">
 
-<!--                <div class="section-title" data-aos="fade-right">-->
-<!--                    <h2>Our Modules</h2>-->
-<!--                    <p>Each module helps you to learn about a different element in space. Try them out!</p>-->
-<!--                </div>-->
+                <div class="section-title" data-aos="fade-right">
+                    <h2>Our Modules</h2>
+                    <p>Each module helps you to learn about a different element in space. Try them out!</p>
+                </div>
 
-<!--                <h4>The Solar System</h4>-->
-<!--                <div class="row" data-aos="zoom-in">-->
+                <h4>The Solar System</h4>
+                <div class="row" data-aos="zoom-in">
 
-<!--                    <repeat group="{{ @modules }}" value="{{ @module }}">-->
-<!--                        <div class="col-lg-3" id="l{{ @module.module_id }}" onclick="moduleClick(this.id)" >-->
-<!--&lt;!&ndash;                            <img class="module_image" id="{{ @progress.{{ @module.module_id }}}}" src="{{ @module.image }}" onload="loadUserProgress(this.id)">&ndash;&gt;-->
-<!--                            <img class="module_stars"  src="assets/img/module-stars/Stars0_full.svg">-->
+                    <repeat group="{{ @modules }}" value="{{ @module }}">
+                        <div class="col-lg-3" id="l{{ @module.module_id }}" onclick="moduleClick(this.id)">
+                            <img class="module_image" src="{{ @module.image }}">
+                            <img class="module_stars" src="assets/img/module-stars/Stars0_full.svg">
 
-<!--                            &lt;!&ndash;              <p>{{ @module.module_name }}</p>&ndash;&gt;-->
-<!--                        </div>-->
-<!--                    </repeat>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--    </false>-->
-<!--</check>-->
+                            <!--              <p>{{ @module.module_name }}</p>-->
+                        </div>
+                    </repeat>
+                </div>
+            </div>
+        </section>
+    </false>
+</check>
 
 
 
@@ -64,10 +64,6 @@
                 window.location.replace("{{ @BASE }}" + result);
             });
     };
-
-    // function loadUserProgress(progress){
-    //     console.log(progress)
-    // };
 
 
 </script>
