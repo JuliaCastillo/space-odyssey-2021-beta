@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>{{ @html_title }}</title>
+      <meta charset="utf8" />
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+
+       <!-- MN moved css to the top -->
+       <link rel="stylesheet" href="../assets/css/style.css" />
+
+      <link href="assets/img/favicon.jpg" rel="icon">
+  	  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+      <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+	   
+      <!-- Vendor CSS Files -->
+      <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+      <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+      <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+      <!-- MN aos is the animation -->
+      <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+      <!-- Template Main CSS File -->
+      <!-- MN Not sure why there is a css file embedded here and another one under assets or how this comment is in purple?? -->
+      <link href="assets/css/style.css" rel="stylesheet">
+
+   </head>
+
+
+
+
+   <body>
+<!--   <check if="{{ @SESSION.userName=='UNSET' }}">-->
+<!--       <true>-->
+       <header id="header" class="header fixed-top ">
+           <div class="container-fluid">
+
+               <div class="row justify-content-center">
+                   <div class="col-xl-9 d-flex align-items-center">
+                       <h1 class="logo mr-auto"><a href="{{ @BASE }}/" class="logo mr-auto"><img src="assets/img/Logo.gif" alt="Logo" class="img-fluid"></a></h1>
+                       <!-- MN added logo instead of text -->
+
+                       <!-- MN NAV BAR -->
+                       <nav class="nav-menu d-none d-lg-block">
+                           <ul>
+                               <li><a href="{{ @BASE }}/">Home</a></li>
+                               <li><a href="{{ @BASE }}/#modules">Our Modules</a></li>
+                               <li><a href="{{ @BASE }}/#about">Our Story</a></li>
+                               <li><a href="{{ @BASE }}/#services">Our Team</a></li>
+                           </ul>
+                       </nav><!-- .nav-menu -->
+
+                      <check if="{{ @SESSION.userName=='UNSET' }}">
+                          <true>
+                            <a href="{{ @BASE }}/login/in" class="get-started-btn scrollto">Login</a>
+                          </true>
+                          <false>
+                              <a href="{{ @BASE }}/login/in" class="get-started-btn scrollto">Logout</a>
+                          </false>
+                      </check>
+
+                   </div>
+               </div>
+
+           </div>
+       </header><!-- End Header -->
+
+<!--       </true>-->
+<!--       <false>-->
+
+<!--          <header class="header fixed-top">-->
+<!--             <div class="container-fluid">-->
+
+<!--                <div class="row justify-content-center">-->
+<!--                   <div class="col-xl-9 d-flex align-items-center">-->
+<!--                      <h1 class="logo mr-auto"><a href="{{ @BASE }}/" class="logo mr-auto"><img src="assets/img/Logo.gif" alt="Logo" class="img-fluid"></a></h1>-->
+<!--                      &lt;!&ndash; MN added logo instead of text &ndash;&gt;-->
+
+<!--                      &lt;!&ndash; MN NAV BAR &ndash;&gt;-->
+<!--                      <nav class="nav-menu d-none d-lg-block">-->
+<!--                         <ul>-->
+<!--                            <li><a href="{{ @BASE }}/">Home</a></li>-->
+<!--                            <li><a href="{{ @BASE }}/#modules">Our Modules</a></li>-->
+<!--                            <li><a href="{{ @BASE }}/#about">Our Story</a></li>-->
+<!--                            <li><a href="{{ @BASE }}/#services">Our Team</a></li>-->
+<!--                         </ul>-->
+<!--                      </nav>&lt;!&ndash; .nav-menu &ndash;&gt;-->
+
+<!--                      &lt;!&ndash;          <a href="#about" class="get-started-btn scrollto">Start Exploring</a>&ndash;&gt;-->
+<!--                       <a href="{{ @BASE }}/logout" class="get-started-btn scrollto">Logout</a>-->
+<!--                   </div>-->
+<!--                </div>-->
+
+<!--             </div>-->
+<!--          </header>-->
+
+
+
+<!--       </false>-->
+<!--   </check>-->
+
+   <include href="{{ @content }}" />
+
+   </body>
+
+</html>

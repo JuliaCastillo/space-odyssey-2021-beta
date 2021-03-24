@@ -26,21 +26,25 @@ if (!$f3->exists('SESSION.userName')) $f3->set('SESSION.userName', 'UNSET');
  // Simple Example URL application routings //
 /////////////////////////////////////////////
 
-//home page (index.html) -- actually just shows form entry page with a different title
+//home page (index.html)
 
 $f3->route('GET /',
     function ($f3) {
         $controller = new SimpleController;
         $modules = $controller->getModules();
-//        if ($f3->get('SESSION.userName') != 'UNSET') {
-//            $progress = $controller->getUserProgress($f3->get('SESSION.userName'));
-//            $f3->set("progress", $progress);
-//        }
 
         $f3->set("modules", $modules);
         $f3->set('html_title','2021 Space Odyssey');
         $f3->set('content','index.html');
         echo Template::instance()->render('layout.html');
+    }
+);
+
+$f3->route('POST /',
+    function ($f3) {
+        $f3->set('SESSION.currentModule', $f3->get('POST.module'));
+        //$f3->reroute('/quiz');
+        echo('/quiz');
     }
 );
 
@@ -52,6 +56,9 @@ $f3->route('GET /progress/@mid',
         echo $progress;
     }
 );
+
+
+// --------------  LOGIN  ---------------- //
 
 $f3->route('GET /login/@msg',				// @msg is a parameter that tells us which message to give the user
     function($f3) {
@@ -73,6 +80,7 @@ $f3->route('GET /login/@msg',				// @msg is a parameter that tells us which mess
     }
 );
 
+
 $f3->route('POST /login',
     function($f3) {
         $controller = new SimpleController;
@@ -85,6 +93,9 @@ $f3->route('POST /login',
             $f3->reroute('/login/err');		// return to login page with the message that there was an error in the credentials
     }
 );
+
+
+// --------------  REGISTER  ---------------- //
 
 $f3->route('GET /register/@msg',				// @msg is a parameter that tells us which message to give the user
     function($f3) {
@@ -112,11 +123,6 @@ $f3->route('POST /register',
             $controller->addNewUser($f3->get('POST.uname'), $f3->get('POST.password'));
             $f3->set('SESSION.userName', $f3->get('POST.uname'));			// note that this is a global that will be available elsewhere
             $f3->reroute('/');
-//            $msg = $controller->checkIfUserExists($f3->get('POST.uname'));
-//            $f3->set('html_title', 'Register');
-//            $f3->set('message', $msg);
-//            $f3->set('content', 'register.html');
-            echo template::instance()->render('layout.html');
         }
     }
 );
@@ -128,47 +134,8 @@ $f3->route('GET /logout',
     }
 );
 
-$f3->route('GET /simpleHome',
-  function ($f3) {
-      $controller = new SimpleController;
-      $modules = $controller->getModules();
 
-      $f3->set("modules", $modules);
-    $f3->set('html_title','Start your adventure');
-    $f3->set('content','simpleHome.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
-$f3->route('POST /',
-    function ($f3) {
-        $f3->set('SESSION.currentModule', $f3->get('POST.module'));
-        //$f3->reroute('/quiz');
-        echo('/quiz');
-    }
-);
-
-// When using GET, provide a form for the user to upload an image via the file input type
-$f3->route('GET /simpleform',
-  function($f3) {
-    $f3->set('html_title','Simple Input Form');
-    $f3->set('content','simpleform.html');
-    echo template::instance()->render('layout.html');
-  }
-);
-
-
-$f3->route('GET /reading',
-    function($f3) {
-        $controller = new SimpleController;
-        $module = $controller->getModule($f3->get('SESSION.currentModule'));
-
-        $f3->set("moduleData", $module);
-        $f3->set('html_title','Learn something new!');
-        $f3->set('content','reading.html');
-        echo template::instance()->render('layout.html');
-    }
-);
+// --------------  QUIZ  ---------------- //
 
 $f3->route('GET /quiz',
     function ($f3) {

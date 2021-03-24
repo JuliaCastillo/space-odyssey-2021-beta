@@ -1,55 +1,28 @@
 
 
 <!-- ======= Modules Section ======= -->
-<check if="{{ @SESSION.userName=='UNSET' }}">
-    <true>
-        <section class="modules section-bg">
-            <div class="container">
+<section id="modules" class="modules section-bg">
+    <div class="container">
 
-                <div class="section-title" data-aos="fade-right">
-                    <h2>Our Modules</h2>
-                    <p>Each module helps you to learn about a different element in space. Try them out!</p>
+        <div class="section-title" data-aos="fade-right">
+            <h2>Our Modules</h2>
+            <p>Each module helps you to learn about a different element in space. Try them out!</p>
+        </div>
+
+        <h4>The Solar System</h4>
+        <div class="row" data-aos="zoom-in">
+
+            <repeat group="{{ @modules }}" value="{{ @module }}">
+                <div class="col-lg-3" id="l{{ @module.module_id }}" onclick="moduleClick(this.id)">
+                    <img class="module_image" src="{{ @module.image }}">
+<!--                            <img class="module_stars" id="image{{ @module.module_id }}">-->
+
                 </div>
+            </repeat>
+        </div>
+    </div>
+</section>
 
-                <h4>The Solar System</h4>
-                <div class="row" data-aos="zoom-in">
-
-                    <repeat group="{{ @modules }}" value="{{ @module }}">
-                        <div class="col-lg-3" id="u{{ @module.module_id }}" onclick="moduleClick(this.id)">
-                            <img class="module_image" src="{{ @module.image }}">
-                            <!--              <p>{{ @module.module_name }}</p>-->
-                        </div>
-                    </repeat>
-                </div>
-            </div>
-        </section>
-    </true>
-    <false>
-        <section class="modules section-bg">
-            <div class="container">
-
-                <div class="section-title" data-aos="fade-right">
-                    <h2>Our Modules</h2>
-                    <p>Each module helps you to learn about a different element in space. Try them out!</p>
-                </div>
-
-                <h4>The Solar System</h4>
-                <div class="row" data-aos="zoom-in">
-
-                    <repeat group="{{ @modules }}" value="{{ @module }}">
-                        <div class="col-lg-3" id="l{{ @module.module_id }}" onclick="moduleClick(this.id)">
-<!--                            <img class="module_image" src="{{ @module.image }}">-->
-                            <img class="module_image" src="{{ @module.image }}">
-                            <img class="module_stars" id="image{{ @module.module_id }}" src="assets/img/module-stars/Stars0_full.svg">
-
-                            <!--              <p>{{ @module.module_name }}</p>-->
-                        </div>
-                    </repeat>
-                </div>
-            </div>
-        </section>
-    </false>
-</check>
 
 
 <script src="{{@BASE}}/ui/js/jquery.min.js"></script>
@@ -65,6 +38,8 @@
                 window.location.replace("{{ @BASE }}" + result);
             });
     }
+
+
     var stars = {
         0: "assets/img/module-stars/Stars0_full.svg",
         1: "assets/img/module-stars/Stars0_full.svg",
