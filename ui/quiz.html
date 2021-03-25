@@ -6,7 +6,7 @@
 
     <div class="quiz_text">
 
-        <h2><i><strong>Welcome to {{ @moduleData.module_name }}!</strong></i></h2>
+        <h1><i><strong>Welcome to {{ @moduleData.module_name }}!</strong></i></h1>
 
 
         <button id="show_reading" class="quiz_button">Teach me something about {{ @moduleData.module_name }} first!</button>
@@ -43,16 +43,36 @@
                     </div>
                 </div>
 
-
-<!--            <label class="option"><input type="radio" name="{{ @question.question_number }}" value="3">  C. {{ @question.option_3 }}</label>-->
-<!--            <label class="option"><input type="radio" name="{{ @question.question_number }}" value="4">  D. {{ @question.option_4 }}</label>-->
-            <br>
+                <br>
             <div class="answers" id="{{ @question.question_number }}"></div>
 
             </div>
             <br>
         </repeat>
-        <button class="quiz_button" onclick="checkAllAnswers()"> Check all answers </button>
+        <button class="quiz_button" id="check_answers" onclick="checkAllAnswers()"> Check all answers </button>
+
+<!--        https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link-->
+        <button class="quiz_button after_check" id="try_again" onclick="location.href='{{ @BASE}}/quiz'">Try again</button>
+        <button class="quiz_button after_check" id="next_module" onclick="goToNextModule()">Next module</button>
+
+
+
+
+        <!-- The Modal -->
+        <!--from https://www.w3schools.com/howto/howto_css_modals.asp-->
+        <div id="results_modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-content2">
+                    <h3 id="modal_message"></h3>
+                    <img class="modal_stars" id="modal_stars"/>
+                    <h5 id="how_many"></h5>
+                    <p id="instructions">Go back to the quiz to see your answers or to move on.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
 <!--    <div class="blob">-->
@@ -60,6 +80,8 @@
 <!--    </div>-->
 
 </div>
+
+
 
 
 
@@ -72,22 +94,32 @@
         });
     });
 
-    function checkAllAnswers() {
+    // Get the modal
+    const modal = document.getElementById("results_modal");
+
+    let correctAnswers;
+
+    async function checkAllAnswers() {
+        correctAnswers = 0;
+        let correct2 = [];
         for (var i = 1; i <= 5; i++) {
-            checkAnswers(i);
+            correct2[i] = await checkAnswers(i);
         }
+        openModal(correctAnswers);
     }
 
     function checkAnswers(qid) {
-
+        //let correct = false;
         $.ajax({
             type: 'GET',
             url: "{{ @BASE }}/quiz/" + qid,
+            async: false,
             success: function(response) {
                 // https://stackoverflow.com/questions/596351/how-can-i-know-which-radio-button-is-selected-via-jquery
                 let selected = $('input[name='+ qid +']:checked').val();
 
                 if (parseInt(selected) === parseInt(response)) {
+                    correctAnswers++;
                     $('#' + qid).html('Correct!');
                 } else {
                     switch (parseInt(response)) {
@@ -113,5 +145,67 @@
             },
         });
     }
+
+    const results_message = {
+        0: "Better luck next time!",
+        1: "Better luck next time!",
+        2: "That's not bad!",
+        3: "That's not bad!",
+        4: "Good job!",
+        5: "Amazing!"
+    };
+
+    const star_images = {
+        0: "assets/img/stars/Stars0.svg",
+        1: "assets/img/stars/Stars5.svg",
+        2: "assets/img/stars/Stars5.svg",
+        3: "assets/img/stars/Stars5.svg",
+        4: "assets/img/stars/Stars5.svg",
+        5: "assets/img/stars/Stars5.svg"
+    };
+
+    const modal_stars = document.getElementById('modal_stars');
+    const modal_message = document.getElementById('modal_message');
+    const how_many = document.getElementById('how_many');
+
+    //buttons
+    const button_check = document.getElementById('check_answers');
+    const button_again = document.getElementById('try_again');
+    const button_next = document.getElementById('next_module');
+
+    function openModal(correctAnswers) {
+        modal_stars.src = star_images[correctAnswers];
+        modal_message.innerHTML = results_message[correctAnswers];
+        how_many.innerHTML = "You got " + correctAnswers + " out of 5 correct.";
+        modal.style.display = "block";
+
+        button_check.style.display = 'none';
+        // positioning buttons side by side: https://stackoverflow.com/questions/27671709/position-buttons-next-to-each-other-in-the-center-of-page/37333329
+        button_again.style.display = 'inline-block';
+        button_next.style.display = 'inline-block';
+    }
+
+    // -------  MODAL  -------- //
+    // from https://www.w3schools.com/howto/howto_css_modals.asp
+
+    // Get the <span> element that closes the modal
+    const span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function goToNextModule() {
+
+    }
+
 </script>
 
