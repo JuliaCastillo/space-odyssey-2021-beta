@@ -91,6 +91,15 @@ class SimpleController {
 		$this->progressMapper->load(['username LIKE ?', $user]);
 		return $this->progressMapper->$mid;
 	}
+
+	public function checkIfModuleExists($module) {
+		$this->modulesMapper->load(['module_id = ?', $module]);
+		$mod = $this->modulesMapper->module_id;
+		if ($mod == $module) {
+			return true;
+		}
+		return false;
+	}
 	
 }
 

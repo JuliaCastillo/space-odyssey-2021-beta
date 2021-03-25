@@ -160,6 +160,14 @@ $f3->route('GET /quiz/@query',
     }
 );
 
+$f3->route('GET /quiz/next',
+    function ($f3) {
+        $controller = new SimpleController;
+        $moduleExists = $controller->checkIfModuleExists($f3->get('SESSION.currentModule')+1);
+    }
+);
+
+
 
   ////////////////////////
  // Run the F3 engine //
