@@ -49,11 +49,11 @@
             </div>
             <br>
         </repeat>
-        <button class="quiz_button" id="check_answers" onclick="checkAllAnswers()"> Check all answers </button>
+        <button class="quiz_button" id="check_answers" onclick="checkAllAnswers()"> Check your answers </button>
 
 <!--        https://stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link-->
         <button class="quiz_button after_check" id="try_again" onclick="location.href='{{ @BASE}}/quiz'">Try again</button>
-        <button class="quiz_button after_check" id="next_module" onclick="goToNextModule()">Next module</button>
+        <button class="quiz_button after_check" id="next_module" onclick="goToNextQuiz()">Next quiz</button>
 
 
 
@@ -73,13 +73,19 @@
                 </div>
             </div>
         </div>
+
+        <div id="snackbar">The next quiz is still in the works!</div>
     </div>
+
+
 
 <!--    <div class="blob">-->
 <!--        <img src="assets/img/blob.svg">-->
 <!--    </div>-->
 
 </div>
+
+
 
 
 
@@ -203,8 +209,27 @@
         }
     }
 
-    function goToNextModule() {
+    function goToNextQuiz() {
 
+        $.get("{{ @BASE }}/quiz/next",
+            function(result){
+                console.log(result);
+                if (result == false) {
+
+                    // Snackbar how to from https://www.w3schools.com/howto/howto_js_snackbar.asp
+                    // Get the snackbar DIV
+                    const x = document.getElementById("snackbar");
+
+                    // Add the "show" class to DIV
+                    x.className = "show";
+
+                    // After 3 seconds, remove the show class from DIV
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+                } else {
+                    window.location.replace("{{ @BASE }}/quiz");
+                }
+            });
     }
 
 </script>
