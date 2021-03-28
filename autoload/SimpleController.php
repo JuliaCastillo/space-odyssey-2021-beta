@@ -116,11 +116,12 @@ class SimpleController {
 		$this->progressMapper->load(['username LIKE ?', $user]);
 		// get points for that module
 		$pnts = $this->progressMapper->$module;
-		// check if points for that module smaller than points
+//		$m = 1;
+		// check if points for that module smaller than points scored
 		if (intval($points) > intval($pnts)) {
-			$this->progressMapper->$module = intval($points);
+			$this->progressMapper->$module = $points;
 			$this->progressMapper->save();
-			return 'bigger';
+			return 'larger';
 		}
 		return 'smaller';
 	}
