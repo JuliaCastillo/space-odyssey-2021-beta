@@ -83,8 +83,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-scrolled, #header.header-inner-pages {
-  background: #72a25a;
-  padding: 12px 0;
+	background: #0f6674;
+	padding-top: 10px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 10px;
 }
 
 .logo {
@@ -142,14 +145,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* home font color */
 .nav-menu a {
-  display: block;
-  position: relative;
-  color: rgb(10, 52, 74);
-  transition: 0.3s;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 0 3px;
-  font-family: 'Open Sans', sans-serif;
+	display: block;
+	position: relative;
+	color: rgba(255,255,255,1.00);
+	transition: 0.3s;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 0 3px;
+	font-family: 'Open Sans', sans-serif;
 }
 /* animated lines */
 .nav-menu > ul > li > a:before {
@@ -164,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 0px;
   transition: all 0.3s ease-in-out 0s;
 }
-/* I DONT KNOW WHAT THIS IS*/
+/* nav menu hover*/
 .nav-menu a:hover:before, .nav-menu li:hover > a:before, .nav-menu .active > a:before {
   visibility: visible;
   width: 100%;
@@ -197,6 +200,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #0A344A;
 }
 
+/*media device size*/
+
 @media (max-width: 992px) {
   .get-started-btn {
     margin: 0 48px 0 0;
@@ -204,8 +209,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* MN- I haven't looked at any of this mobile navigation- minimizing them so they dont taunt me in my dreams 
-Bootstrap note: Mobile Navigation */
+/*Bootstrap note: Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
   right: 15px;
