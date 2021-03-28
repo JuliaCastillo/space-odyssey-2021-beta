@@ -134,6 +134,16 @@ $f3->route('GET /logout',
     }
 );
 
+// --------------  QUIZ  ---------------- //
+
+$f3->route('GET /explore',
+    function ($f3) {
+        $f3->set('html_title','Explore!');
+        $f3->set('content','explore.html');
+        echo Template::instance()->render('layout.html');
+    }
+);
+
 
 // --------------  QUIZ  ---------------- //
 
@@ -170,6 +180,23 @@ $f3->route('GET /quiz/next',
         } else {
             echo false;
         }
+    }
+);
+
+$f3->route('GET /quiz/backg',
+    function ($f3) {
+        $controller = new SimpleController;
+        $background = $controller->getBackground($f3->get('SESSION.currentModule'));
+        echo $background;
+    }
+);
+
+$f3->route('POST /savepoints',
+    function ($f3) {
+        $points = $f3->get('POST.points');
+        $controller = new SimpleController;
+        $pnts = $controller->savePoints($points, $f3->get('SESSION.userName'), $f3->get('SESSION.currentModule'));
+        echo $pnts;
     }
 );
 

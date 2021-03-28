@@ -1,7 +1,7 @@
 
 
 
-<div class="quiz_backg">
+<div class="quiz_backg" id="quiz_backg" >
 
 
     <div class="quiz_text">
@@ -100,6 +100,22 @@
         });
     });
 
+    const backg = document.getElementById('quiz_backg');
+    $(document).ready(function(){
+        $.ajax({
+            type: 'GET',
+            url: "{{ @BASE }}/quiz/backg",
+            async: false,
+            success: function(response) {
+                backg.style.background = "url("+ response +") center";
+            },
+            failure: function() {
+                console.log("background failure");
+            },
+        });
+
+    });
+
     // Get the modal
     const modal = document.getElementById("results_modal");
 
@@ -107,11 +123,18 @@
 
     async function checkAllAnswers() {
         correctAnswers = 0;
-        let correct2 = [];
         for (var i = 1; i <= 5; i++) {
-            correct2[i] = await checkAnswers(i);
+            checkAnswers(i);
         }
         openModal(correctAnswers);
+
+        $.post("{{ @BASE }}/savepoints", {
+                points: correctAnswers,
+            },
+            function(result){
+                console.log(result);
+            }
+        );
     }
 
     function checkAnswers(qid) {
@@ -150,6 +173,8 @@
                 console.log("failure");
             },
         });
+
+
     }
 
     const results_message = {
@@ -162,12 +187,12 @@
     };
 
     const star_images = {
-        0: "assets/img/stars/Stars0.svg",
-        1: "assets/img/stars/Stars5.svg",
-        2: "assets/img/stars/Stars5.svg",
-        3: "assets/img/stars/Stars5.svg",
-        4: "assets/img/stars/Stars5.svg",
-        5: "assets/img/stars/Stars5.svg"
+        0: "assets/img/stars/Stars_0.svg",
+        1: "assets/img/stars/Stars_1.svg",
+        2: "assets/img/stars/Stars_2.svg",
+        3: "assets/img/stars/Stars_3.svg",
+        4: "assets/img/stars/Stars_4.svg",
+        5: "assets/img/stars/Stars_5.svg"
     };
 
     const modal_stars = document.getElementById('modal_stars');

@@ -10,16 +10,29 @@
         </div>
 
         <h4>The Solar System</h4>
+        <br />
         <div class="row" data-aos="zoom-in">
 
             <repeat group="{{ @modules }}" value="{{ @module }}">
                 <div class="col-lg-3" id="l{{ @module.module_id }}" onclick="moduleClick(this.id)">
                     <img class="module_image" src="{{ @module.image }}">
-<!--                            <img class="module_stars" id="image{{ @module.module_id }}">-->
+                    <check if="{{ @SESSION.userName=='UNSET' }}">
+                        <false>
+                            <img class="module_stars" id="image{{ @module.module_id }}">
+                        </false>
+                    </check>
 
                 </div>
             </repeat>
         </div>
+        <br />
+        <br />
+        <br />
+        <div class="section-title" data-aos="fade-right">
+            <h4>Coming soon...</h4>
+            <p>The Big Bang, the Solar System's formation, Galaxies, and other planets</p>
+        </div>
+
     </div>
 </section>
 
@@ -41,12 +54,12 @@
 
 
     var stars = {
-        0: "assets/img/module-stars/Stars0_full.svg",
-        1: "assets/img/module-stars/Stars0_full.svg",
-        2: "assets/img/module-stars/Stars0_full.svg",
-        3: "assets/img/module-stars/Stars0_full.svg",
-        4: "assets/img/module-stars/Stars0_full.svg",
-        5: "assets/img/module-stars/Stars5_full.svg"
+        0: "assets/img/module-stars/Stars0.svg",
+        1: "assets/img/module-stars/Stars1.svg",
+        2: "assets/img/module-stars/Stars2.svg",
+        3: "assets/img/module-stars/Stars3.svg",
+        4: "assets/img/module-stars/Stars4.svg",
+        5: "assets/img/module-stars/Stars5.svg"
     };
 
     function loadUserProgress(module_id){
@@ -55,8 +68,7 @@
             type: 'GET',
             url: "{{ @BASE }}/progress/" + module_id,
             success: function(response) {
-                console.log(stars[parseInt(response)]);
-
+                stars_image.src = stars[parseInt(response)];
             },
             failure: function() {
                 console.log("Failure loading user progress");

@@ -85,6 +85,9 @@ class SimpleController {
 		$this->loginMapper->username = $user;
 		$this->loginMapper->password = $pwd;
 		$this->loginMapper->save();
+
+		$this->progressMapper->username = $user;
+		$this->progressMapper->save();
 	}
 
 	public function getUserProgress($user, $mid) {
@@ -96,9 +99,30 @@ class SimpleController {
 		$this->modulesMapper->load(['module_id = ?', $module]);
 		$mod = $this->modulesMapper->module_id;
 		if ($mod == $module) {
-			return true;
+			if ($this->modulesMapper->available == 'true') {
+				return true;
+			}
 		}
 		return false;
+	}
+
+	public function getBackground($module) {
+		$this->modulesMapper->load(['module_id = ?', $module]);
+		return $this->modulesMapper->background;
+	}
+
+	public function savePoints($points, $user, $module) {
+		// get user in table
+		$this->progressMapper->load(['username LIKE ?', $user]);
+		// get points for that module
+		$pnts = $this->progressMapper->$module;
+		// check if points for that module smaller than points
+		if (intval($points) > intval($pnts)) {
+			$this->progressMapper->$module = intval($points);
+			$this->progressMapper->save();
+			return 'bigger';
+		}
+		return 'smaller';
 	}
 	
 }
