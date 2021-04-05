@@ -60,7 +60,9 @@ $f3->route('GET /progress/@mid',
 
 // --------------  LOGIN  ---------------- //
 
-$f3->route('GET /login/@msg',				// @msg is a parameter that tells us which message to give the user
+
+
+$f3->route('GET /login@msg',				// @msg is a parameter that tells us which message to give the user
     function($f3) {
         switch ($f3->get('PARAMS.msg')) {		// PARAMS.msg is whatever was the last element of the URL
             case "err":
@@ -70,11 +72,11 @@ $f3->route('GET /login/@msg',				// @msg is a parameter that tells us which mess
                 $msg = "You have been logged out.";
                 break;
             default:						// this is the case if neither of the above cases is matched
-                $msg = "Login here";
+                $msg = "Log in here";
         }
         $f3->set('html_title', 'Simple Login Form');
         $f3->set('message', $msg);				// set message that will be shown to user in the login.html template
-        $f3->set('thisIsLoginPage', 'true');	// set flag that will be tested in layout.html, to say this is login page
+        //$f3->set('thisIsLoginPage', 'true');	// set flag that will be tested in layout.html, to say this is login page
         $f3->set('content', 'login.html');		// the login form that will be shown to the user
         echo template::instance()->render('layout.html');
     }
@@ -90,14 +92,14 @@ $f3->route('POST /login',
             //echo template::instance()->render('layout.html');
         }
         else
-            $f3->reroute('/login/err');		// return to login page with the message that there was an error in the credentials
+            $f3->reroute('/loginerr');		// return to login page with the message that there was an error in the credentials
     }
 );
 
 
 // --------------  REGISTER  ---------------- //
 
-$f3->route('GET /register/@msg',				// @msg is a parameter that tells us which message to give the user
+$f3->route('GET /register@msg',				// @msg is a parameter that tells us which message to give the user
     function($f3) {
         switch ($f3->get('PARAMS.msg')) {		// PARAMS.msg is whatever was the last element of the URL
             case "exists":
@@ -118,7 +120,7 @@ $f3->route('POST /register',
     function($f3) {
         $controller = new SimpleController;
         if ($controller->checkIfUserExists($f3->get('POST.uname'))) {
-            $f3->reroute('/register/exists');
+            $f3->reroute('/registerexists');
         } else {
             $controller->addNewUser($f3->get('POST.uname'), $f3->get('POST.password'));
             $f3->set('SESSION.userName', $f3->get('POST.uname'));			// note that this is a global that will be available elsewhere
@@ -134,10 +136,14 @@ $f3->route('GET /logout',
     }
 );
 
-// --------------  QUIZ  ---------------- //
+// --------------  EXPLORE  ---------------- //
 
 $f3->route('GET /explore',
     function ($f3) {
+        $controller = new SimpleController;
+        $topics = $controller->getTopics();
+
+        $f3->set('topics', $topics);
         $f3->set('html_title','Explore!');
         $f3->set('content','explore.html');
         echo Template::instance()->render('layout.html');

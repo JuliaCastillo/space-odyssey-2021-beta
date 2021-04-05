@@ -1,1 +1,86 @@
-<p>Page coming soon...</p>
+
+<div id="explore_bg">
+    <div id="explore_page" class="row">
+
+            <nav class="section-nav">
+                <ul>
+                    <repeat group="{{ @topics }}" value="{{ @topic }}">
+                        <li><a href="#{{ @topic.topic_name }}">{{ @topic.topic_name }}</a></li>
+                    </repeat>
+                </ul>
+            </nav>
+            <div class="sections">
+                <repeat group="{{ @topics }}" value="{{ @topic }}">
+                    <section id="{{ @topic.topic_name }}">
+                        <h5><i>{{ @topic.supertopic_name }}</i></h5>
+                        <h1>{{ @topic.topic_name }}</h1>
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <p>{{ @topic.text | raw }}</p>
+                                <a class="link_button" target="_blank" href="{{ @topic.nasa_link }}">Find out more at NASA</a>
+                                <check if="{{ @topic.visit_link=='' }}">
+                                    <false>
+                                        <a class="link_button" target="_blank" href="{{ @topic.visit_link }}">Visit {{ @topic.topic_name }}</a>
+                                    </false>
+                                </check>
+                                <check if="{{ @topic.quiz_module==0 }}">
+                                    <false>
+                                        <button class="link_button" id="{{ @topic.quiz_module }}" onclick="goToQuiz(this.id)">Go to the quiz</button>
+                                    </false>
+                                </check>
+                            </div>
+                            <div class="col-lg-5">
+<!--                            youtube iframe from https://www.w3schools.com/html/html_youtube.asp-->
+                                <iframe width="420" height="315"
+                                        frameborder="0" border="0"
+                                        src="{{ @topic.yt_link }}">
+                                </iframe>
+                            </div>
+                        </div>
+                    </section>
+                </repeat>
+            </div>
+
+
+    </div>
+</div>
+
+
+<script src="{{@BASE}}/ui/js/jquery.min.js"></script>
+<script>
+
+    // Sticky table of contents from: https://css-tricks.com/sticky-table-of-contents-with-scrolling-active-states/
+    window.addEventListener('DOMContentLoaded', () => {
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                if (entry.intersectionRatio > 0) {
+                    document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.add('active');
+                } else {
+                    document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.remove('active');
+                }
+            });
+        });
+
+        // Track all sections that have an `id` applied
+        document.querySelectorAll('section[id]').forEach((section) => {
+            observer.observe(section);
+        });
+
+    });
+
+
+    function goToQuiz(quiz_module) {
+        $.post("{{ @BASE }}/", {
+                module: quiz_module,
+            },
+            function(result){
+                window.location.replace("{{ @BASE }}" + result);
+            });
+    }
+
+    // $(window).scroll(function() {
+    //     console.log('scroll');
+    // });
+</script>

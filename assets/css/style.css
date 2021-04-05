@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-scrolled, #header.header-inner-pages {
-	background: #0f6674;
+	background: #0A344A;
 	padding-top: 10px;
 	padding-right: 0;
 	padding-left: 0;
@@ -95,19 +95,19 @@ h1, h2, h3, h4, h5, h6 {
   height: auto;
 }
 
-#header .logo {
-  font-size: 32px;
-  margin: 0;
-  padding: 0;
-  line-height: 2;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-/* MN changed to image*/
-#header .logo a {
-  color: #0f6674;
-}
+/*#header .logo {*/
+/*  font-size: 32px;*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  line-height: 2;*/
+/*  font-weight: 400;*/
+/*  letter-spacing: 2px;*/
+/*  text-transform: uppercase;*/
+/*}*/
+/*!* MN changed to image*!*/
+/*#header .logo a {*/
+/*  color: #0f6674;*/
+/*}*/
 
 #header .logo img {
   max-height: 80px;
@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Start Exploring Large Button */
 .get-started-btn {
   margin-left: 25px;
-  color: #0A344A;
+  color: rgba(255,255,255,1.00);
   border-radius: 5px;
   padding: 6px 25px 8px 25px;
   white-space: nowrap;
@@ -196,7 +196,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   font-weight: 600;
   display: inline-block;
-  border: 2px solid rgb(10, 52, 74);
+  border: 2px solid rgba(255,255,255,1.00);
 }
 
 .get-started-btn:hover {
@@ -320,6 +320,105 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
+
+/*--------------------------------------------------------------
+# EXPLORE page
+--------------------------------------------------------------*/
+
+#explore_bg {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/explore_bg.jpg") center;
+  background-size: cover;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#explore_page {
+  padding: 20px;
+  margin-left: 120px;
+  margin-right: 20px;
+  margin-top: 120px;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+}
+
+.sections {
+  margin-left: 140px;
+}
+
+.link_button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 10px 28px;
+  border-radius: 5px;
+  transition: 0.5s;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(88,156,148,1) 21%, rgba(138,193,161,1) 46%, rgba(244,228,146,1) 91%);
+  position: relative;
+  margin-right: 10px;
+  margin-top: 10px;
+  border: none;
+}
+
+.link_button:hover {
+  cursor: pointer;
+  background: rgba(88,156,148,1);
+}
+
+/*#explore_page > nav {*/
+/*  position: sticky;*/
+/*  top: 2rem;*/
+/*  align-self: start;*/
+/*}*/
+
+/* 3. ScrollSpy active styles (see JS tab for activation) */
+.section-nav li.active > a {
+  color: #ffa76e;
+  font-weight: 500;
+}
+
+/* Sidebar Navigation */
+.section-nav {
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  /*top: 20px;*/
+  left: 20px;
+  border-left: 1px solid #efefef;
+  overflow-x: hidden;
+  padding: 8px 0;
+  /*margin-left: 20px;*/
+}
+
+.section-nav a {
+  text-decoration: none;
+  display: block;
+  padding: .125rem 0;
+  color: #ccc;
+  transition: all 50ms ease-in-out; /* 💡 This small transition makes setting of the active state smooth */
+}
+
+.section-nav a:hover,
+.section-nav a:focus {
+  color: rgba(88,156,148,1);
+}
+
+ul, ol {
+  list-style: none;
+  margin: 5px;
+  padding: 0;
+}
+
+li {
+  font-size: 18px;
+  padding: 5px;
+}
+
 /*--------------------------------------------------------------
 # QUIZ page
 --------------------------------------------------------------*/
@@ -329,6 +428,7 @@ h1, h2, h3, h4, h5, h6 {
   height: auto;
   background: url("../img/hero-bg.png") center;
   background-size: cover;
+
 }
 
 .quiz_backg {
@@ -464,7 +564,7 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
   margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #ffa76e; /* Black background color */
+  background-color: #ffa76e;
   color: #fff; /* White text color */
   text-align: center; /* Centered text */
   border-radius: 6px; /* Rounded borders */
@@ -504,6 +604,76 @@ h1, h2, h3, h4, h5, h6 {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 }
+
+/*--------------------------------------------------------------
+# Login/register page
+--------------------------------------------------------------*/
+
+.login_bg {
+  width: 100%;
+  height: 100%;
+  background: url("../img/explore_bg.jpg") center;
+  background-size: cover;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.login_content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  /*margin: 50px;*/
+  color: #FFFFFF;
+  align-items: center;
+  justify-content: center;
+}
+
+#login_form, #register_form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*borderless text input from https://stackoverflow.com/questions/37465458/input-text-field-with-only-bottom-border/37465540*/
+#login_form input[type=text], #login_form input[type=password]{
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  color: #FFFFFF;
+}
+
+#register_form input[type=text], #register_form input[type=password]{
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  color: #FFFFFF;
+}
+
+/*change placeholder colour from https://www.w3schools.com/howto/howto_css_placeholder.asp*/
+::placeholder {
+  color: #bbb;
+  opacity: 50%;
+}
+
+#login_form input[type=submit], #register_form input[type=submit]{
+  margin: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.register_button {
+  margin: 0px;
+}
+
 
 
 
@@ -672,6 +842,8 @@ section {
   height: 390px;
   width: 225px;
   position: relative;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .module_stars {
