@@ -50,6 +50,14 @@
 <script src="{{@BASE}}/ui/js/jquery.min.js"></script>
 <script>
 
+    $('#explore_bg').scroll(function() {
+        if ($(this).scrollTop() > 100) {
+            $('#header').addClass('header-scrolled');
+        } else {
+            $('#header').removeClass('header-scrolled');
+        }
+    });
+
     // Sticky table of contents from: https://css-tricks.com/sticky-table-of-contents-with-scrolling-active-states/
     window.addEventListener('DOMContentLoaded', () => {
 

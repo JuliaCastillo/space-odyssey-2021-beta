@@ -94,6 +94,13 @@
 <script src="{{@BASE}}/ui/js/jquery.min.js"></script>
 <script>
 
+    $('.quiz_backg').scroll(function() {
+        if ($(this).scrollTop() > 100) {
+            $('#header').addClass('header-scrolled');
+        } else {
+            $('#header').removeClass('header-scrolled');
+        }
+    });
 
     $(document).ready(function(){
         $("#show_reading").click(function(){

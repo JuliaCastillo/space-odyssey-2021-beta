@@ -162,7 +162,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: #0A344A;
+  /*background-color: #0A344A;*/
+  background-color: #FFCC99;
   visibility: hidden;
   width: 0px;
   transition: all 0.3s ease-in-out 0s;
@@ -171,7 +172,8 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu a:hover:before, .nav-menu li:hover > a:before, .nav-menu .active > a:before {
   visibility: visible;
   width: 100%;
-  color: rgb(10, 52, 74);
+  /*color: rgb(10, 52, 74);*/
+  color: #FFCC99;
 }
 
 /* home font hover color */
@@ -180,7 +182,8 @@ h1, h2, h3, h4, h5, h6 {
 /*}*/
 
 .nav-menu a:hover, .nav-menu li:hover > a {
-  color: #0a344a;
+  /*color: #0a344a;*/
+  color: #FFCC99;
 }
 
 /* removed drop down code*/
@@ -200,8 +203,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .get-started-btn:hover {
-  border-color: #0A344A;
-  color: #0A344A;
+  /*border-color: #0A344A;*/
+  /*color: #0A344A;*/
+  border-color: rgba(88,156,148,1);
+  color: rgba(88,156,148,1);
 }
 
 /*media device size*/
