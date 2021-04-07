@@ -508,11 +508,11 @@ li {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  background: linear-gradient(90deg, rgba(22,92,103,1) 21%, rgba(12,78,112,1) 46%, rgba(44,73,100,1) 91%);
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  /*border: 1px solid #888;*/
+  width: 50%; /* Could be more or less, depending on screen size */
 }
 
 .modal-content2 {
@@ -532,7 +532,8 @@ li {
 
 .close:hover,
 .close:focus {
-  color: black;
+  /*color: black;*/
+  color: #FFFFFF;
   text-decoration: none;
   cursor: pointer;
 }
@@ -544,14 +545,17 @@ li {
 
 
 #modal_message {
-  color: #0a344a;
+  /*color: #0a344a;*/
+  color: #FFFFFF;
 }
 #instructions {
-  color: #1b1e21;
+  /*color: #1b1e21;*/
+  color: #aaa;
 }
 
 #how_many {
-  color: #0a344a;
+  /*color: #0a344a;*/
+  color: #FFFFFF;
 }
 .modal-content2 h3 h5 {
   color: #0a344a;
