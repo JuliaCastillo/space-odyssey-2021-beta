@@ -163,7 +163,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: -5px;
   left: 0;
   /*background-color: #0A344A;*/
-  background-color: #FFCC99;
+  background-color: #FFFFFF;
   visibility: hidden;
   width: 0px;
   transition: all 0.3s ease-in-out 0s;
@@ -173,7 +173,7 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
   width: 100%;
   /*color: rgb(10, 52, 74);*/
-  color: #FFCC99;
+  color: #FFFFFF;
 }
 
 /* home font hover color */
@@ -183,7 +183,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu a:hover, .nav-menu li:hover > a {
   /*color: #0a344a;*/
-  color: #FFCC99;
+  color: #FFFFFF;
 }
 
 /* removed drop down code*/
@@ -205,8 +205,9 @@ h1, h2, h3, h4, h5, h6 {
 .get-started-btn:hover {
   /*border-color: #0A344A;*/
   /*color: #0A344A;*/
-  border-color: rgba(88,156,148,1);
-  color: rgba(88,156,148,1);
+  border-color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #0A344A;
 }
 
 /*media device size*/
@@ -263,14 +264,14 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav a {
   display: block;
   position: relative;
-  color: #2c4964;
+  color: #fff;
   padding: 10px 20px;
   font-weight: 500;
   outline: none;
 }
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-  color: #0A344A;
+  color: #fff;
   text-decoration: none;
 }
 
