@@ -375,6 +375,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #FFFFFF;
 }
 
+#explore_page h1 {
+  color: #F6FAAE;
+}
+
 .sections {
   margin-left: 140px;
 }
@@ -410,7 +414,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 3. ScrollSpy active styles (see JS tab for activation) */
 .section-nav li.active > a {
-  color: #ffa76e;
+  color: #F6FAAE;
   font-weight: 500;
 }
 
@@ -437,7 +441,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-nav a:hover,
 .section-nav a:focus {
-  color: rgba(88,156,148,1);
+  color: #F6FAAE;
 }
 
 ul, ol {
