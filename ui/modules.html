@@ -18,7 +18,7 @@
                     <img class="module_image" src="{{ @module.image }}">
                     <check if="{{ @SESSION.userName=='UNSET' }}">
                         <false>
-                            <img class="module_stars" id="image{{ @module.module_id }}">
+                            <img class="module_stars" id="image{{ @module.module_id }}" style="display: none">
                         </false>
                     </check>
 
@@ -68,7 +68,11 @@
             type: 'GET',
             url: "{{ @BASE }}/progress/" + module_id,
             success: function(response) {
-                stars_image.src = stars[parseInt(response)];
+                if (response in stars) {
+                    stars_image.style.display = "block";
+                    stars_image.src = stars[parseInt(response)];
+                }
+
             },
             failure: function() {
                 console.log("Failure loading user progress");

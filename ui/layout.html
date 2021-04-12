@@ -64,6 +64,8 @@
                         <a href="{{ @BASE }}/loginin" class="get-started-btn scrollto">Login</a>
                     </true>
                     <false>
+                        <h3 class="nav_partition">|</h3>
+                        <label class="hello_user">Hello, {{ @SESSION.userName }}!</label>
                         <a href="{{ @BASE }}/logout" class="get-started-btn scrollto">Logout</a>
                     </false>
                 </check>
