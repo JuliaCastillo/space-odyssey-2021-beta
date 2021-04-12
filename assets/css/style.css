@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo {
-  width: 150px;
+  width: 120px;
   height: auto;
 }
 
@@ -364,13 +364,14 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 #explore_page {
   padding: 20px;
   margin-left: 120px;
   margin-right: 20px;
-  margin-top: 120px;
+  /*margin-top: 120px;*/
   margin-bottom: 20px;
   color: #FFFFFF;
 }
@@ -381,6 +382,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .sections {
   margin-left: 140px;
+  /*margin-top: 140px;*/
 }
 
 .link_button {
@@ -423,7 +425,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 130px;
   position: fixed;
   z-index: 1;
-  /*top: 20px;*/
+  top: 160px;
   left: 20px;
   border-left: 1px solid #efefef;
   overflow-x: hidden;
