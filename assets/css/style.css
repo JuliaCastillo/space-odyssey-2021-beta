@@ -154,6 +154,11 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0 3px;
 	font-family: 'Open Sans', sans-serif;
 }
+
+.nav-menu li {
+  color: rgba(255,255,255,1.00);
+}
+
 /* animated lines */
 .nav-menu > ul > li > a:before {
   content: "";
@@ -906,8 +911,10 @@ section {
   height: 390px;
   width: 225px;
   left: 14px;
+
 }
 
+/*For hover effect, we followed: https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/*/
 .module_selector {
   transition: all .2s ease-in-out;
 }
