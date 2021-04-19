@@ -908,6 +908,14 @@ section {
   left: 14px;
 }
 
+.module_selector {
+  transition: all .2s ease-in-out;
+}
+
+.module_selector:hover {
+  transform: scale(1.1);
+}
+
 
 /*--------------------------------------------------------------
 # About
