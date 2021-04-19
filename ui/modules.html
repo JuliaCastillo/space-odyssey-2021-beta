@@ -14,7 +14,7 @@
         <div class="row" data-aos="zoom-in">
 
             <repeat group="{{ @modules }}" value="{{ @module }}">
-                <div class="col-lg-3" id="l{{ @module.module_id }}" onclick="moduleClick(this.id)">
+                <div class="col-lg-3 module_selector" id="l{{ @module.module_id }}" onclick="moduleClick(this.id)">
                     <img class="module_image" src="{{ @module.image }}">
                     <check if="{{ @SESSION.userName=='UNSET' }}">
                         <false>
@@ -49,7 +49,8 @@
             function(result){
                 // from https://love2dev.com/blog/ways-to-use-javascript-redirect-to-another-page/
                 window.location.replace("{{ @BASE }}" + result);
-            });
+            }
+        );
     }
 
 
@@ -68,11 +69,10 @@
             type: 'GET',
             url: "{{ @BASE }}/progress/" + module_id,
             success: function(response) {
-                if (response in stars) {
-                    stars_image.style.display = "block";
+                if (parseInt(response) in stars) {
+                    stars_image.style.display = "initial";
                     stars_image.src = stars[parseInt(response)];
                 }
-
             },
             failure: function() {
                 console.log("Failure loading user progress");
