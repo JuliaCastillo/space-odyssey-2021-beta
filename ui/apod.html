@@ -1,9 +1,19 @@
-<section>
-    <h1>NASA Astronomy Picture Of The Day</h1>
-    <h2 id="title"></h2>
-    <h3>Date: <span id="date"></span></h3>
-    <img id="pic" src="" alt="NASA Picture Of The Day" width="100%">
-    <p id="explanation"></p>
+
+<!-- Code taken from https://wilsjame.github.io/how-to-nasa/ -->
+
+<section id="apod">
+    <div class="container">
+        <div class="section-title" data-aos="fade-right">
+            <h2>NASA Astronomy Picture Of The Day</h2>
+            <h3 id="astro_title"></h3>
+            <h5>Date: <span id="astro_date"></span></h5>
+            <p id="astro_explanation"></p>
+        </div>
+
+
+        <img id="astro_pic" src="" alt="NASA Picture Of The Day" width="100%">
+
+    </div>
 </section>
 
 <script>
@@ -17,10 +27,10 @@
     req.addEventListener("load", function(){
         if(req.status == 200 && req.readyState == 4){
             var response = JSON.parse(req.responseText);
-            document.getElementById("title").textContent = response.title;
-            document.getElementById("date").textContent = response.date;
-            document.getElementById("pic").src = response.hdurl;
-            document.getElementById("explanation").textContent = response.explanation;
+            document.getElementById("astro_title").textContent = response.title;
+            document.getElementById("astro_date").textContent = response.date;
+            document.getElementById("astro_pic").src = response.hdurl;
+            document.getElementById("astro_explanation").textContent = response.explanation;
         }
     })
 </script>

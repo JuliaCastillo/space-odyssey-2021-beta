@@ -983,7 +983,17 @@ section {
 }
 
 
+/*--------------------------------------------------------------
+# APOD Section
+--------------------------------------------------------------*/
 
+#astro_pic {
+  padding: 30px;
+}
+
+#astro_explanation {
+  text-align: center;
+}
 
 /*--------------------------------------------------------------
 # MN Updated to Our Team- Formerly Services- trying to replace icons
