@@ -42,9 +42,15 @@ $f3->route('GET /',
 
 $f3->route('POST /',
     function ($f3) {
-        $f3->set('SESSION.currentModule', $f3->get('POST.module'));
-        //$f3->reroute('/quiz');
-        echo('/quiz');
+        $controller = new SimpleController;
+        $moduleAvailable = $controller->checkIfModuleExists($f3->get('POST.module'));
+        if ($moduleAvailable){
+            $f3->set('SESSION.currentModule', $f3->get('POST.module'));
+            echo true;
+        } else {
+            echo false;
+        }
+
     }
 );
 
@@ -149,6 +155,7 @@ $f3->route('GET /explore',
         echo Template::instance()->render('layout.html');
     }
 );
+
 
 
 // --------------  QUIZ  ---------------- //

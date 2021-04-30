@@ -868,6 +868,7 @@ section {
 .section-title {
   text-align: center;
   padding-bottom: 30px;
+  color: #FFFFFF;
 }
 
 .section-title h2 {
@@ -877,6 +878,7 @@ section {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
+  color: #F6FAAE;
 }
 
 .section-title h2::after {
@@ -885,7 +887,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #0A344A;
+  background: #F6FAAE;
   bottom: 0;
   left: calc(50% - 25px);
 }
@@ -898,6 +900,14 @@ section {
 /*--------------------------------------------------------------
 # Modules
 --------------------------------------------------------------*/
+.modules {
+  background: linear-gradient(45deg, #d8756c, #18796e);
+}
+
+.modules h4 {
+  color: #FFFFFF;
+}
+
 .module_image {
   height: 390px;
   width: 225px;
@@ -929,13 +939,17 @@ section {
 --------------------------------------------------------------*/
 .about {
   padding: 120px 0;
-  background: linear-gradient(90deg, rgba(88,156,148,1) 21%, rgba(138,193,161,1) 46%, rgba(244,228,146,1) 91%);
+  background: linear-gradient(45deg, #732952, #d8756c);
+}
+
+.about .content {
+  color: #FFFFFF;
 }
 
 .about .content h3 {
   font-weight: 600;
   font-size: 32px;
-  color: #2c4964;
+  color: #F6FAAE;
 }
 
 .about .content ul {
@@ -950,7 +964,7 @@ section {
 .about .content ul i {
   font-size: 20px;
   padding-right: 4px;
-  color: #0A344A;
+  color: #F6FAAE;
 }
 
 .about .content p:last-child {
@@ -967,12 +981,12 @@ section {
   border-radius: 5px;
   transition: 0.5s;
   color: #fff;
-  background: linear-gradient(90deg, rgba(88,156,148,1) 21%, rgba(138,193,161,1) 46%, rgba(244,228,146,1) 91%);
+  background: linear-gradient(45deg, #732952, #d8756c);
   position: relative;
 }
 
 .about .content .read-more:hover {
-  background: linear-gradient(90deg, rgba(237,196,164,1) 21%, rgba(247,191,172,1) 46%, rgba(244,228,146,1) 91%);
+  background: #d8756c;
 }
 
 .about .content .read-more i {
@@ -986,7 +1000,9 @@ section {
 /*--------------------------------------------------------------
 # APOD Section
 --------------------------------------------------------------*/
-
+#apod {
+  background: linear-gradient(45deg, #0a1237, #732952);
+}
 #astro_pic {
   padding: 30px;
 }
@@ -995,138 +1011,7 @@ section {
   text-align: center;
 }
 
-/*--------------------------------------------------------------
-# MN Updated to Our Team- Formerly Services- trying to replace icons
---------------------------------------------------------------*/
-.services .icon-box {
-  text-align: center;
-  padding: 70px 20px 80px 20px;
-  transition: all ease-in-out 0.3s;
-  background: #fff;
-}
 
-.services .icon-box .icon {
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: ease-in-out 0.3s;
-  position: relative;
-}
-
-.services .icon-box .icon i {
-  font-size: 36px;
-  transition: 0.5s;
-  position: relative;
-}
-
-.services .icon-box .icon svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-/* MN blob background white background */
-.services .icon-box .icon svg path {
-  transition: 0.5s;
-  fill: #fff;
-}
-
-.services .icon-box h4 {
-  font-weight: 600;
-  margin: 10px 0 15px 0;
-  font-size: 22px;
-}
-
-.services .icon-box h4 a {
-  color: #2c4964;
-  transition: ease-in-out 0.3s;
-}
-
-.services .icon-box p {
-  line-height: 24px;
-  font-size: 14px;
-  margin-bottom: 0;
-}
-
-.services .icon-box:hover {
-  border-color: #fff;
-  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
-}
-
-.services .iconbox-blue i {
-  color: #47aeff;
-}
-
-.services .iconbox-blue:hover .icon i {
-  color: #fff;
-}
-
-.services .iconbox-blue:hover .icon path {
-  fill: #47aeff;
-}
-
-.services .iconbox-orange i {
-  color: #ffa76e;
-}
-
-.services .iconbox-orange:hover .icon i {
-  color: #fff;
-}
-
-.services .iconbox-orange:hover .icon path {
-  fill: #ffa76e;
-}
-
-.services .iconbox-pink i {
-  color: #e80368;
-}
-
-.services .iconbox-pink:hover .icon i {
-  color: #fff;
-}
-
-.services .iconbox-pink:hover .icon path {
-  fill: #e80368;
-}
-
-.services .iconbox-yellow i {
-  color: #ffbb2c;
-}
-
-.services .iconbox-yellow:hover .icon i {
-  color: #fff;
-}
-
-.services .iconbox-yellow:hover .icon path {
-  fill: #ffbb2c;
-}
-
-.services .iconbox-red i {
-  color: #ff5828;
-}
-
-.services .iconbox-red:hover .icon i {
-  color: #fff;
-}
-
-.services .iconbox-red:hover .icon path {
-  fill: #ff5828;
-}
-
-.services .iconbox-teal i {
-  color: #11dbcf;
-}
-
-.services .iconbox-teal:hover .icon i {
-  color: #fff;
-}
-
-.services .iconbox-teal:hover .icon path {
-  fill: #11dbcf;
-}
 
 /*--------------------------------------------------------------
 # Features

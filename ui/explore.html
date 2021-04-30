@@ -26,13 +26,13 @@
                                 </check>
                                 <check if="{{ @topic.quiz_module==0 }}">
                                     <false>
-                                        <button class="link_button" id="{{ @topic.quiz_module }}" onclick="goToQuiz(this.id)">Go to the quiz</button>
+                                        <button class="link_button" id="button_quiz{{ @topic.quiz_module }}" onclick="goToQuiz(this.id)">Go to the quiz</button>
                                     </false>
                                 </check>
                             </div>
                             <div class="col-lg-5">
-<!--                            youtube iframe from https://www.w3schools.com/html/html_youtube.asp-->
-<!--                            remove border from iframe: https://stackoverflow.com/questions/217776/how-to-apply-css-to-iframe-->
+<!--                            youtube iframe from https://www.w3schools.com/html/html_youtube.asp -->
+<!--                            remove border from iframe: https://stackoverflow.com/questions/217776/how-to-apply-css-to-iframe -->
                                 <iframe width="420" height="315"
                                         frameborder="0" border="0"
                                         src="{{ @topic.yt_link }}">
@@ -83,14 +83,11 @@
 
     function goToQuiz(quiz_module) {
         $.post("{{ @BASE }}/", {
-                module: quiz_module,
+                module: quiz_module.substring(11),
             },
-            function(result){
-                window.location.replace("{{ @BASE }}" + result);
+            function(){
+                window.location.replace("{{ @BASE }}/quiz");
             });
     }
 
-    // $(window).scroll(function() {
-    //     console.log('scroll');
-    // });
 </script>

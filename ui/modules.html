@@ -47,8 +47,11 @@
                 module: clicked_module.substring(1),
             },
             function(result){
-                // from https://love2dev.com/blog/ways-to-use-javascript-redirect-to-another-page/
-                window.location.replace("{{ @BASE }}" + result);
+                if (result == true) {
+                    // from https://love2dev.com/blog/ways-to-use-javascript-redirect-to-another-page/
+                    window.location.replace("{{ @BASE }}/quiz");
+                }
+
             }
         );
     }
