@@ -1049,7 +1049,7 @@ section {
   color: #fff;
   font-size: 14px;
   background: #0c5460;
-  background: linear-gradient(45deg, rgb(29, 103, 121) 0%, rgba(12, 7, 47, 0.9) 100%), url("../img/hero-bg.png") center center no-repeat;
+  background: linear-gradient(45deg,rgba(12, 7, 47, 0.9) 0%, rgb(29, 103, 121) 100%), url("../img/hero-bg.png") center center no-repeat;
   background-size: cover;
 }
 
