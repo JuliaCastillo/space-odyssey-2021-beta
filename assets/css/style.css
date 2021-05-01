@@ -901,7 +901,7 @@ section {
 # Modules
 --------------------------------------------------------------*/
 .modules {
-  background: linear-gradient(45deg, #d8756c, #18796e);
+  background: linear-gradient(45deg, #0a344a, #18796e);
 }
 
 .modules h4 {
@@ -939,7 +939,7 @@ section {
 --------------------------------------------------------------*/
 .about {
   padding: 120px 0;
-  background: linear-gradient(45deg, #732952, #d8756c);
+  background: linear-gradient(45deg, #18796e, #0a344a);
 }
 
 .about .content {
@@ -1001,7 +1001,7 @@ section {
 # APOD Section
 --------------------------------------------------------------*/
 #apod {
-  background: linear-gradient(45deg, #0a1237, #732952);
+  background: linear-gradient(45deg, #0a344a, #18796e);
 }
 #astro_pic {
   padding: 30px;
