@@ -1048,8 +1048,7 @@ section {
 #footer {
   color: #fff;
   font-size: 14px;
-  
-  background: linear-gradient(45deg,rgba(12, 7, 47, 0.9) 0%, rgb(29, 103, 121) 100%) ;
+  background: linear-gradient(45deg, #012840, #0a344a ) ;
   background-size: cover;
 }
 
